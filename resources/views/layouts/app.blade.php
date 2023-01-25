@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
     <title>
-        {{ $title.' | APP' ?? 'APP' }}
+        {{ $title.' | Gladiadores De Chichén Itzá' ?? 'Gladiadores De Chichén Itzá' }}
     </title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
     <!--     Fonts and icons     -->
@@ -99,6 +99,9 @@
 
     <!-- sweetalert2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+      <!-- iconos awesome -->
+      <script src="https://kit.fontawesome.com/58c5330fd0.js" crossorigin="anonymous"></script>
 
 
 

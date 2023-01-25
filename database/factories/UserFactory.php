@@ -36,11 +36,13 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'nickname' => $this->faker->name(),
+            'phone'=> Str::random(10),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
             'password' => Hash::make('secret'), // secret
-            'role_id' => 3,
+            //'role_id' => 3,
             'created_at' => now(),
             'updated_at' => now()
         ];

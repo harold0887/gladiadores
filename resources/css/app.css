@@ -115,4 +115,22 @@ body{
       height: 50px;
   }
 
+  .table-responsive {
+
+    padding: 5px;
+  }
+
+.main-panel > .content {
+    padding: 0px;
+
+  }
+  #fixed-plugin {
+ 
+    display: none;
+  }
+
+}
+.fixed-plugin {
+ 
+  top: 62px;
 }

@@ -9,14 +9,17 @@ class IndexUsers extends Component
 {
     public $search = '';
     public $sortDirection = 'asc';
-    public $sortField = 'name';
+    public $sortField = 'id';
 
 
     public function render()
     {
         $users = User::where(function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%')
-                ->orWhere('email', 'like', '%' . $this->search . '%');
+                ->orWhere('email', 'like', '%' . $this->search . '%')
+                ->orWhere('phone', 'like', '%' . $this->search . '%')
+                ->orWhere('nickname', 'like', '%' . $this->search . '%');
+
         })
             //->whereNotIn('email', ['harold0887@hotmail.com'])
             ->orderBy($this->sortField, $this->sortDirection)

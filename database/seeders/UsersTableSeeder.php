@@ -41,8 +41,25 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+
         $admin->assignRole('administrador');
         $admin->assignRole('usuario');
         $usuario->assignRole('usuario');
+
+
+        for ($i=1; $i <9 ; $i++) { 
+            $new = User::create([
+                'name' => 'Usuario '.$i,
+                'nickname'=>'user '.$i,
+                'email' => 'user'.$i.'@hotmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('secret'),
+                'phone'=>'552518243'.$i,
+                'created_by'=>'System',
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+            $new->assignRole('usuario');
+        }
     }
 }
