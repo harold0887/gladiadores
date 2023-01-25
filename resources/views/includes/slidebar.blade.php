@@ -43,7 +43,7 @@
                             <form class="dropdown-item" action="{{ route('logout') }}" id="formLogOutSidebar" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <a   onclick="document.getElementById('formLogOutSidebar').submit();">
+                            <a onclick="document.getElementById('formLogOutSidebar').submit();">
                                 <span class="sidebar-mini-icon">{{ __('LO') }}</span>
                                 <span class="sidebar-normal">{{ __('Logout') }}</span>
                             </a>
@@ -59,10 +59,10 @@
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li class="nav-item {{ $activePage == 'item1' ? 'active' : '' }}">
-                <a href="#">
+            <li class="nav-item {{ $activePage == 'users' ? 'active' : '' }}">
+                <a href="{{ route('users.index') }}">
                     <i class="nc-icon nc-book-bookmark"></i>
-                    <p>Item 1</p>
+                    <p>Usuarios</p>
                 </a>
             </li>
 

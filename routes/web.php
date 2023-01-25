@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -31,4 +32,7 @@ Route::group(['middleware' => ['role:administrador']], function () {
 	Route::get('dashboard/profile', [ProfileAdminController::class, 'edit'])->name('dashboard.edit');
 	Route::put('dashboard/profile', [ProfileAdminController::class, 'update'])->name('dashboard.update');
 	Route::put('dashboard/password', [ProfileAdminController::class, 'password'])->name('dashboard.password');
+	Route::resource('dashboard/users', 'UserController', ['except' => ['show']]);
+
+	Route::resource('dashboard/users', UserAdminController::class)->except(['delete']);
 });

@@ -23,6 +23,8 @@ class UsersTableSeeder extends Seeder
             'email' => 'harold0887@hotmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('5514404046'),
+            'phone'=>'5525182443',
+            'created_by'=>'System',
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -33,11 +35,14 @@ class UsersTableSeeder extends Seeder
             'email' => 'arnulfoacosta0887@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('5514404046'),
+            'phone'=>'5525182445',
+            'created_by'=>'System',
             'created_at' => now(),
             'updated_at' => now()
         ]);
 
         $admin->assignRole('administrador');
+        $admin->assignRole('usuario');
         $usuario->assignRole('usuario');
     }
 }

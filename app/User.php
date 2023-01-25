@@ -15,7 +15,7 @@ class User extends Authenticatable
     use HasRoles;
 
     protected $fillable = [
-        'name','nickname','email', 'password', 'picture',
+        'name','nickname','email', 'password', 'picture','phone','created_by'
     ];
 
    
@@ -31,6 +31,12 @@ class User extends Authenticatable
         }
 
         return 'http://i.pravatar.cc/200';
+    }
+
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 
  
