@@ -19,7 +19,6 @@ class IndexUsers extends Component
                 ->orWhere('email', 'like', '%' . $this->search . '%')
                 ->orWhere('phone', 'like', '%' . $this->search . '%')
                 ->orWhere('nickname', 'like', '%' . $this->search . '%');
-
         })
             //->whereNotIn('email', ['harold0887@hotmail.com'])
             ->orderBy($this->sortField, $this->sortDirection)

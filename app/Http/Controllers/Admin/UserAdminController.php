@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Contracts\Role;
 
 class UserAdminController extends Controller
 {
@@ -26,7 +29,11 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        //
+        $roles = DB::table('roles')
+        ->whereNotIn('name', ['propietario', 'super-admin'])->get();
+
+     
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -35,9 +42,26 @@ class UserAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $model)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'nickname' => ['required', 'string', 'max:255'],
+            'phone' => 'required|regex:/^[0-9]{10}$/|unique:users,phone',
+            'rol_id' => 'required|regex:/^[1-2]{1}$/',
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'password_confirmation' => ['required', 'string', 'min:6'],
+        ]);
+
+
+        $model->create($request->merge([
+            'picture' => $request->photo ? $request->photo->store('profile', 'public') : null,
+            'password' => Hash::make($request->get('password')),
+            'created_by' => auth()->user()->name
+        ])->all());
+
+        return redirect()->route('user.index')->withStatus(__('User successfully created.'));
     }
 
     /**

@@ -1,5 +1,8 @@
+
 <div class="content">
+@include('modal.add-admin')
     <div class="container-fluid mt--6  ">
+    
         <div class="row m-0">
             <div class="col-12 border-bottom ">
                 <h4 class="m-0  text-center">{{ __('Users') }}</h4>
@@ -8,9 +11,9 @@
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " href="{{ route('users.create') }}">
-                        <i class="fa-solid fa-plus"></i>
-                            <span>Agregar usuario</span>
+                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#modal-add-admin">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Agregar administrador</span>
                         </a>
                     </div>
                     <div class="col-12 col-md-3  mt-2  align-self-center">
@@ -38,7 +41,7 @@
             </div>
         </div>
         <div class="row ">
-            @if (isset($users) && $users->count() > 0)
+            @if (isset($administradores) && $administradores->count() > 0)
             <div class="col ">
                 <div class="card">
 
@@ -53,7 +56,7 @@
                         <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    
+
                                     <th scope="col">{{ __('Photo') }}</th>
                                     <th scope="col" style="cursor:pointer" wire:click="setSort('name')">{{ __('Name') }}
                                         @if($sortField=='name')
@@ -80,7 +83,7 @@
                                     </th>
                                     <th scope="col">{{ __('Phone') }}</th>
                                     <th scope="col">Alias</th>
-                                
+
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Acciones</th>
 
@@ -88,10 +91,10 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($administradores as $user)
 
                                 <tr>
-                                 
+
                                     <td class="px-1 py-0 rounded">
                                         <span class="avatar avatar-sm rounded-circle">
                                             @if($user->picture !=null)
@@ -124,13 +127,28 @@
                                         {{ $user->created_by }}
                                     </td>
                                     <td class="text-center">
-                                        <div class="btn-group">
-                                            <a href="#" class="btn btn-info btn-link btn-icon btn-sm like"><i class="fa fa-heart"></i></a>
-                                            <a href="#" class="btn btn-warning btn-link btn-icon btn-sm edit"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-link btn-icon btn-sm remove"><i class="fa fa-times"></i></a>
+
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="nc-icon nc-bullet-list-67"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+
+                                                <a class="dropdown-item p-0 " style="cursor: pointer;" wire:click="removeAdminConfirm('{{$user->id}}','{{$user->name}}')">
+                                                    <button class="btn btn-icon  text-danger p-0 btn-link">
+                                                        <span class=" btn-inner--icon"><i class="material-icons">close</i></span>
+                                                    </button>
+                                                    <span class="mx-3">Remover permisos de administrador</span>
+                                                </a>
+
+
+
+                                            </div>
                                         </div>
 
                                     </td>
+
+
                                 </tr>
 
                                 @endforeach
@@ -151,4 +169,5 @@
             @endif
         </div>
     </div>
+
 </div>

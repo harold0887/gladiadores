@@ -20,6 +20,8 @@
 
 
 
+ <!-- select Boostrap -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 
        
 
@@ -37,7 +39,7 @@
 <body class="{{ $class }}">
 
 
-    @if (Route::is('dashboard','dashboard.*','users.*'))
+    @if (Route::is('dashboard','dashboard.*','users.*','administradores.index'))
     @include('layouts.page_templates.admin')
 
     @elseif(Route::is('login','register','password.email','password.request','password.reset'))
@@ -103,12 +105,14 @@
       <!-- iconos awesome -->
       <script src="https://kit.fontawesome.com/58c5330fd0.js" crossorigin="anonymous"></script>
 
+ <!-- select Boostrap -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 
     @stack('scripts')
 
-    @livewireScripts
+   
     @include('includes.fixed-plugin-js')
-
+    @livewireScripts
 </body>
 </html>

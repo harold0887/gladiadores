@@ -1,3 +1,4 @@
+
 body{
     background-color: #F4F3EF !important;
   }
@@ -92,11 +93,11 @@ body{
 
 
 .avatar-md {
-  width: 80px;
-  height: 80px;
-  overflow: hidden;
+  width: 80px !important;
+  height: 80px !important;
+ 
   border-radius: 50%;
-  margin-bottom: 15px;
+
 }
 
 .avatar-lg {

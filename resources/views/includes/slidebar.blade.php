@@ -61,14 +61,20 @@
             </li>
             <li class="nav-item {{ $activePage == 'users' ? 'active' : '' }}">
                 <a href="{{ route('users.index') }}">
-                    <i class="nc-icon nc-book-bookmark"></i>
+                <i class="fa-solid fa-users"></i>
                     <p>Usuarios</p>
+                </a>
+            </li>
+            <li class="nav-item {{ $activePage == 'administradores' ? 'active' : '' }}">
+                <a href="{{ route('administradores.index') }}">
+                <i class="fa-solid fa-user-lock"></i>
+                    <p>administradores</p>
                 </a>
             </li>
 
 
 
-
+            
 
         </ul>
     </div>

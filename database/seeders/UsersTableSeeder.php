@@ -47,7 +47,7 @@ class UsersTableSeeder extends Seeder
         $usuario->assignRole('usuario');
 
 
-        for ($i=1; $i <9 ; $i++) { 
+        for ($i=1; $i <10 ; $i++) { 
             $new = User::create([
                 'name' => 'Usuario '.$i,
                 'nickname'=>'user '.$i,

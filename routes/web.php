@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\IndexAdministrators;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\ProfileAdminController;
@@ -33,6 +34,8 @@ Route::group(['middleware' => ['role:administrador']], function () {
 	Route::put('dashboard/profile', [ProfileAdminController::class, 'update'])->name('dashboard.update');
 	Route::put('dashboard/password', [ProfileAdminController::class, 'password'])->name('dashboard.password');
 	Route::resource('dashboard/users', 'UserController', ['except' => ['show']]);
+	
+	Route::get('dashboard/administradores', [IndexAdministrators::class, '__invoke'])->name('administradores.index');
 
 	Route::resource('dashboard/users', UserAdminController::class)->except(['delete']);
 });
