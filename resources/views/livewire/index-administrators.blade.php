@@ -1,9 +1,14 @@
 
+
+  @include('modal.add-admin')
 <div class="content">
-@include('modal.add-admin')
+
     <div class="container-fluid mt--6  ">
-    
+ 
         <div class="row m-0">
+            <div class="col-12">
+          
+            </div>
             <div class="col-12 border-bottom ">
                 <h4 class="m-0  text-center">{{ __('Users') }}</h4>
             </div>
@@ -11,7 +16,7 @@
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#modal-add-admin">
+                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#showOrderModal">
                             <i class="fa-solid fa-plus"></i>
                             <span>Agregar administrador</span>
                         </a>

@@ -834,16 +834,17 @@ demo = {
 
   },
 
-  showNotification: function(from, align) {
+  showNotification: function(from, align, title, message) {
     color = Math.floor((Math.random() * 4) + 1);
 
     $.notify({
       icon: "nc-icon nc-bell-55",
-      message: "Welcome to <b>Paper DashboardPro</b> - a beautiful bootstrap dashboard for every web developer."
+      //message: "Welcome to <b>Paper DashboardPro</b> - a beautiful bootstrap dashboard for every web developer."
+      message: "<b>"+title+"</b> - "+ message+"."
 
     }, {
       type: type[color],
-      timer: 8000,
+      timer: 5000,
       placement: {
         from: from,
         align: align

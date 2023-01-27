@@ -9,7 +9,7 @@
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
                         <a class="btn  btn-block  btn-outline-primary " href="{{ route('users.create') }}">
-                        <i class="fa-solid fa-plus"></i>
+                            <i class="fa-solid fa-plus"></i>
                             <span>Agregar usuario</span>
                         </a>
                     </div>
@@ -53,7 +53,7 @@
                         <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    
+
                                     <th scope="col">{{ __('Photo') }}</th>
                                     <th scope="col" style="cursor:pointer" wire:click="setSort('name')">{{ __('Name') }}
                                         @if($sortField=='name')
@@ -80,7 +80,7 @@
                                     </th>
                                     <th scope="col">{{ __('Phone') }}</th>
                                     <th scope="col">Alias</th>
-                                
+
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Acciones</th>
 
@@ -91,7 +91,7 @@
                                 @foreach ($users as $user)
 
                                 <tr>
-                                 
+
                                     <td class="px-1 py-0 rounded">
                                         <span class="avatar avatar-sm rounded-circle">
                                             @if($user->picture !=null)
@@ -125,18 +125,22 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="#" class="btn btn-info btn-link btn-icon btn-sm like"><i class="fa fa-heart"></i></a>
-                                            <a href="#" class="btn btn-warning btn-link btn-icon btn-sm edit"><i class="fa fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger btn-link btn-icon btn-sm remove"><i class="fa fa-times"></i></a>
+
+                                            <a href="{{ route('users.edit',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
+
+                                            <form method="post" action="{{ route('users.destroy', $user->id) }} ">
+                                                <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-user">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <i class="material-icons ">close</i>
+                                                </button>
+                                            </form>
                                         </div>
 
                                     </td>
                                 </tr>
 
                                 @endforeach
-
-
-
                             </tbody>
                         </table>
 
@@ -152,3 +156,5 @@
         </div>
     </div>
 </div>
+
+@include('includes.alerts')

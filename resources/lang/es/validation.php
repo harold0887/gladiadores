@@ -166,7 +166,9 @@ return [
         'new comment'=>'comentario',
         'subject'=>'asunto',
         'message'=>'mensaje',
-        'agree_terms_and_conditions'=>'términos y condiciones'
+        'agree_terms_and_conditions'=>'términos y condiciones',
+        'phone'=>'teléfono',
+        'nickname'=>'alias'
     
 
     ],

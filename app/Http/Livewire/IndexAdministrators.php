@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndexAdministrators extends Component
 {
-    public $search = '', $userSelect = '', $rol = '', $cargo = '';
+    public $search = '', $newAdministrador='';
     public $selectedInput = '';
     public $sortDirection = 'asc';
     public $sortField = 'id';

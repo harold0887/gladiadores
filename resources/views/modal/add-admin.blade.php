@@ -1,58 +1,24 @@
-<div wire:ignore.self  class="modal fade" id="modal-add-admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div wire:ignore.self class="modal fade mt-5" id="showOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Administrador {{$userSelect}}
-                </h5>
+                <h5 class="modal-title text-black" id="exampleModalLabel">Agregar administrador: {{$newAdministrador}} </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                    
-                <form wire.ignore   wire:submit.prevent="submit()">
-                    <div class="row justify-content-center">
-                        <div  class="form-group col-10">
-                            <label for="note">Seleccione un usuario para asignar permisos de administrador</label>                            
-                    
-                            <select id="select" class="form-control {{ $errors->has('userSelect') ? ' is-invalid border-danger' : '' }} " wire:model="userSelect">
-                                <option value="" disabled selected>Selecciona un usuario...</option>
-                                @if (isset($users) && $users->count() > 0)
-                                @foreach ($users as $user)
-                                <option value="{{$user->id}}">{{$user->name}}</option>
-                                @endforeach
-                                @endif
-                            </select>
-                            @if ($errors->has('userSelect'))
-                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                <strong>{{ $errors->first('userSelect') }}</strong>
-                            </span>
-                            @endif
-                        </div>
+            <div wire:ignore class="modal-body">
 
-
-
-
-
-                    </div>
-
-                    <div class="col-12  mt-2 text-center">
-                        <button type="submit" class="btn btn-primary " {{$userSelect==''?'disabled':''}}  >Registrar administrador</button>
-                    </div>
-                </form>
-
-
-
+            <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
+                                    <input type="text"  class="form-control" )  autofocus wire:model="newAdministrador">
              
-
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" data-dismiss="modal" wire:click="reload()">Cerrar</button>
-
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
-
-
-
 </div>
