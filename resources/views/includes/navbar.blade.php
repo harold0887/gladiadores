@@ -22,8 +22,8 @@
                         <i class="nc-icon nc-mobile"></i> {{ __('Home') }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">
+                <li class="nav-item {{ $activePage == 'membership' ? 'active':''}}">
+                    <a href="{{ route('membresias') }}" class="nav-link">
                         <i class="nc-icon nc-layout-11"></i> Membresias
                     </a>
                 </li>

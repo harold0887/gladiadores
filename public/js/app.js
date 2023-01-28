@@ -67,7 +67,7 @@ Livewire.on("error", function ($message) {
   swal.fire("Error!", $message["message"], "error");
 });
 Livewire.on("success-auto-close", function ($message) {
-  swal({
+  Swal.fire({
     title: "¡Buen trabajo!",
     text: $message["message"],
     type: "success",

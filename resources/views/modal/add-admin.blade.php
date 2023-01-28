@@ -10,7 +10,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div wire:ignore class="modal-body">
+            <div  class="modal-body">
 
             <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
                                     <input type="text"  class="form-control" )  autofocus wire:model="newAdministrador">

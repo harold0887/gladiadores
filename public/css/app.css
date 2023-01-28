@@ -111,6 +111,48 @@ body{
 }
   
 
+  .main-panel1 {
+  position: relative;
+  float: right;
+  width: calc(100% - 0px);
+  background-color: #f4f3ef;
+  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  
+}
+  
+
+  .main-panel1 > .content {
+  padding: 0 30px 30px;
+  min-height: calc(100vh - 123px);
+  margin-top: 93px;
+}
+  
+
+  .border-primary {
+  border-color: #34b5b8 !important;
+}
+  
+
+  .whatsapp {
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#25d366;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:30px;
+  z-index:100;
+}
+  
+
+  .whatsapp-icon {
+  margin-top:13px;
+}
+  
+
   @media only screen and (max-device-width: 500px) {
   .avatar-md
   {

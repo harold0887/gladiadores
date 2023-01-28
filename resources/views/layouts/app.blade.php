@@ -40,7 +40,7 @@
 <body class="{{ $class }}">
 
 
-    @if (Route::is('dashboard','dashboard.*','users.*','administradores.index'))
+    @if (Route::is('dashboard','dashboard.*','users.*','administradores.*','membresias.*'))
     @include('layouts.page_templates.admin')
 
     @elseif(Route::is('login','register','password.email','password.request','password.reset'))
@@ -48,7 +48,7 @@
     @else
     @include('layouts.page_templates.white')
     @endif
-
+	<!-- <a href="https://wa.me/5525182443?text=Me%20gustaría%20saber%20el%20precio%20del%20coche" class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a> -->
 
 
 

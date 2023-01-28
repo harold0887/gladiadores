@@ -1,24 +1,16 @@
-
-
-
 <div class="content">
-@include('modal.add-admin')
     <div class="container-fluid mt--6  ">
- 
         <div class="row m-0">
-            <div class="col-12">
-          
-            </div>
             <div class="col-12 border-bottom ">
-                <h4 class="m-0  text-center">{{ __('Users') }}</h4>
+                <h4 class="m-0  text-center">Membresias</h4>
             </div>
 
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#showOrderModal">
+                        <a class="btn  btn-block  btn-outline-primary " href="{{ route('users.create') }}">
                             <i class="fa-solid fa-plus"></i>
-                            <span>Agregar administrador</span>
+                            <span>Agregar membresia</span>
                         </a>
                     </div>
                     <div class="col-12 col-md-3  mt-2  align-self-center">
@@ -33,7 +25,7 @@
                     </div>
                     <div class="col-12   col-md-5 mt-2 align-self-center">
                         <div class="input-group no-border">
-                            <input type="text" class="form-control" placeholder="Buscar por nombre, email, teléfono o alias..." wire:model="search">
+                            <input type="text" class="form-control" placeholder="Buscar por nombre..." wire:model="search">
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <i class="nc-icon nc-zoom-split"></i>
@@ -46,23 +38,16 @@
             </div>
         </div>
         <div class="row ">
-            @if (isset($administradores) && $administradores->count() > 0)
+            @if (isset($memberships) && $memberships->count() > 0)
             <div class="col ">
                 <div class="card">
-
-
-                    <div class="col-12 ">
-                        @include('alerts.success')
-                        @include('alerts.errors')
-                    </div>
-
                     <div class="table-responsive  p-md-4 " id="users-table">
 
                         <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
                             <thead>
                                 <tr>
 
-                                    <th scope="col">{{ __('Photo') }}</th>
+
                                     <th scope="col" style="cursor:pointer" wire:click="setSort('name')">{{ __('Name') }}
                                         @if($sortField=='name')
                                         @if($sortDirection=='asc')
@@ -75,7 +60,8 @@
                                         @endif
 
                                     </th>
-                                    <th scope="col" style="cursor:pointer" wire:click="setSort('email')">{{ __('Email') }}
+                                    <th scope="col">Frecuencia</th>
+                                    <th scope="col" style="cursor:pointer" wire:click="setSort('email')">Precio
                                         @if($sortField=='email')
                                         @if($sortDirection=='asc')
                                         <i class="fa-solid fa-arrow-down-a-z"></i>
@@ -86,80 +72,69 @@
                                         <i class="fa-solid fa-sort mr-1"></i>
                                         @endif
                                     </th>
-                                    <th scope="col">{{ __('Phone') }}</th>
-                                    <th scope="col">Alias</th>
+                                    <th scope="col">Descuento</th>
+                                    <th scope="col">Precio con descuento</th>
 
-                                    <th scope="col">{{ __('Create by') }}</th>
+                                    <th scope="col">Visible</th>
+                                    <th scope="col">Principal</th>
                                     <th scope="col">Acciones</th>
 
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($administradores as $user)
+                                @foreach ($memberships as $membership)
 
                                 <tr>
 
-                                    <td class="px-1 py-0 rounded">
-                                        <span class="avatar avatar-sm rounded-circle">
-                                            @if($user->picture !=null)
-                                            <img class="avatar-md border-gray m-0" src="{{ Storage::url($user->picture) }}" alt="...">
-                                            @else
-                                            <img class="avatar-md border-gray m-0" src="{{ asset('img/No Profile Picture.png') }}" alt="...">
-                                            @endif
-                                        </span>
-                                    </td>
-                                    <td>{{ $user->name }}</td>
+
+                                    <td>{{ $membership->name }}</td>
+                                    <td>{{ $membership->frecuencia }}</td>
 
                                     <td>
-                                        {{ $user->email }}
+                                        {{ $membership->price }}
                                     </td>
                                     <td>
-                                        {{ $user->phone }}
+                                        {{ $membership->discount }}
                                     </td>
                                     <td>
-                                        {{ $user->nickname }}
+                                        {{ $membership->price_with_discount }}
                                     </td>
-                                    <!-- <td>
-                                        @if(!empty($user->roles()->get()))
-                                        @foreach($user->getRoleNames() as $v)
-                                        <label class="badge badge-primary text-white btn-link">{{ $v }}</label>
-                                        <br>
-                                        @endforeach
+                                    <td>
+                                        @if ($membership->status == 1)
+                                        <input wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')"  class="bootstrap-switch" type="checkbox" data-toggle="switch" checked data-on-label="<i class='nc-icon nc-check-2'></i>" data-off-label="<i class='nc-icon nc-simple-remove'></i>" data-on-color="success" data-off-color="success" />
+
+                                        @else
+                                        <input wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')" class="bootstrap-switch" type="checkbox" data-toggle="switch" data-on-label="<i class='nc-icon nc-check-2'></i>" data-off-label="<i class='nc-icon nc-simple-remove'></i>" data-on-color="success" data-off-color="success" />
                                         @endif
-                                    </td> -->
-                                    <td>
-                                        {{ $user->created_by }}
                                     </td>
+                                    <td>
+                                        @if ($membership->main == 1)
+                                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" checked="" data-on-color="info" data-off-color="info" data-on-label="ON" data-off-label="OFF">
+                                        @else
+                                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" data-off-color="info" data-on-color="info" data-on-label="ON" data-off-label="OFF">
+                                        @endif
+                                    </td>
+
+
                                     <td class="text-center">
+                                        <div class="btn-group">
 
-                                        <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="nc-icon nc-bullet-list-67"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            <a href="{{ route('users.edit',$membership->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
-                                                <a class="dropdown-item p-0 " style="cursor: pointer;" wire:click="removeAdminConfirm('{{$user->id}}','{{$user->name}}')">
-                                                    <button class="btn btn-icon  text-danger p-0 btn-link">
-                                                        <span class=" btn-inner--icon"><i class="material-icons">close</i></span>
-                                                    </button>
-                                                    <span class="mx-3">Remover permisos de administrador</span>
-                                                </a>
-
-
-
-                                            </div>
+                                            <form method="post" action="{{ route('users.destroy', $membership->id) }} ">
+                                                <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-user">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <i class="material-icons ">close</i>
+                                                </button>
+                                            </form>
                                         </div>
 
                                     </td>
-
-
                                 </tr>
 
                                 @endforeach
-
-
-
                             </tbody>
                         </table>
 
@@ -174,5 +149,6 @@
             @endif
         </div>
     </div>
-
 </div>
+
+@include('includes.alerts')

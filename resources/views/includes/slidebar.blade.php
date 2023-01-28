@@ -71,6 +71,12 @@
                     <p>administradores</p>
                 </a>
             </li>
+            <li class="nav-item {{ $activePage == 'membresias' ? 'active' : '' }}">
+                <a href="{{ route('membresias.index') }}">
+                <i class="material-icons">card_membership</i>
+                    <p>Membresias</p>
+                </a>
+            </li>
 
 
 
