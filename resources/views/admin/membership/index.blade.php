@@ -2,9 +2,9 @@
 'class' => '',
 'folderActive' => '',
 'elementActive' => 'memberships',
-'title'=>'Usuarios',
+'title'=>'Membresias',
 'navbarClass'=>'navbar-transparent',
-'activePage'=>'memberships',
+'activePage'=>'membresias',
 ])
 
 @section('content')

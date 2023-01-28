@@ -16,6 +16,18 @@ class MembresiaSeeder extends Seeder
     public function run()
     {
         Membresia::create([
+            'name' => 'Mensual',
+            'frecuencia_id'=>4,
+            'price'=>899,
+            'discount'=>159,
+            'price_with_discount'=>750,
+            'description' =>'Membresia mensual',
+            'status'=>1,
+            'main'=>0,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        Membresia::create([
             'name' => 'Anual',
             'frecuencia_id'=>1,
             'price'=>8000,
@@ -24,18 +36,6 @@ class MembresiaSeeder extends Seeder
             'description' =>'Membresia anual',
             'status'=>1,
             'main'=>1,
-            'created_at'=>now(),
-            'updated_at'=>now(),
-        ]);
-        Membresia::create([
-            'name' => 'Semestral',
-            'frecuencia_id'=>2,
-            'price'=>5100,
-            'discount'=>0,
-            'price_with_discount'=>5100,
-            'description' =>'Membresia semestral',
-            'status'=>1,
-            'main'=>0,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
@@ -52,17 +52,19 @@ class MembresiaSeeder extends Seeder
             'updated_at'=>now(),
         ]);
         Membresia::create([
-            'name' => 'Mensual',
-            'frecuencia_id'=>4,
-            'price'=>899,
-            'discount'=>159,
-            'price_with_discount'=>750,
-            'description' =>'Membresia mensual',
+            'name' => 'Semestral',
+            'frecuencia_id'=>2,
+            'price'=>5100,
+            'discount'=>0,
+            'price_with_discount'=>5100,
+            'description' =>'Membresia semestral',
             'status'=>1,
             'main'=>0,
             'created_at'=>now(),
             'updated_at'=>now(),
         ]);
+       
+        
 
         Membresia::create([
             'name' => 'Pa los cuates',

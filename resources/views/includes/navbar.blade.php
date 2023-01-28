@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item {{ $activePage == 'membership' ? 'active':''}}">
-                    <a href="{{ route('membresias') }}" class="nav-link">
+                    <a href="{{ route('memberships') }}" class="nav-link">
                         <i class="nc-icon nc-layout-11"></i> Membresias
                     </a>
                 </li>

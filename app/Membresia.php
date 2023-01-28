@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Membresia extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'status'
+    ];
 }
+s

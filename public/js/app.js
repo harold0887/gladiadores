@@ -70,7 +70,7 @@ Livewire.on("success-auto-close", function ($message) {
   Swal.fire({
     title: "¡Buen trabajo!",
     text: $message["message"],
-    type: "success",
+    //type: "success",
     icon: "success",
     timer: 2000,
     button: false

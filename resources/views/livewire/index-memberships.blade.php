@@ -8,7 +8,7 @@
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " href="{{ route('users.create') }}">
+                        <a class="btn  btn-block  btn-outline-primary " href="{{ route('membresias.create') }}">
                             <i class="fa-solid fa-plus"></i>
                             <span>Agregar membresia</span>
                         </a>
@@ -75,8 +75,8 @@
                                     <th scope="col">Descuento</th>
                                     <th scope="col">Precio con descuento</th>
 
-                                    <th scope="col">Visible</th>
-                                    <th scope="col">Principal</th>
+                                    <th scope="col">Visible *</th>
+                                    <th scope="col">Principal **</th>
                                     <th scope="col">Acciones</th>
 
                                 </tr>
@@ -101,28 +101,27 @@
                                         {{ $membership->price_with_discount }}
                                     </td>
                                     <td>
-                                        @if ($membership->status == 1)
-                                        <input wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')"  class="bootstrap-switch" type="checkbox" data-toggle="switch" checked data-on-label="<i class='nc-icon nc-check-2'></i>" data-off-label="<i class='nc-icon nc-simple-remove'></i>" data-on-color="success" data-off-color="success" />
-
-                                        @else
-                                        <input wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')" class="bootstrap-switch" type="checkbox" data-toggle="switch" data-on-label="<i class='nc-icon nc-check-2'></i>" data-off-label="<i class='nc-icon nc-simple-remove'></i>" data-on-color="success" data-off-color="success" />
-                                        @endif
+                                        <div class="togglebutton" wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')">
+                                            <label>
+                                                <input type="checkbox" {{ $membership->status == 1 ? 'checked ' : '' }} name="status">
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
                                     </td>
                                     <td>
-                                        @if ($membership->main == 1)
-                                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" checked="" data-on-color="info" data-off-color="info" data-on-label="ON" data-off-label="OFF">
-                                        @else
-                                        <input class="bootstrap-switch" type="checkbox" data-toggle="switch" data-off-color="info" data-on-color="info" data-on-label="ON" data-off-label="OFF">
-                                        @endif
+                                        <div class="togglebutton" wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')">
+                                            <label>
+                                                <input type="checkbox" {{ $membership->main == 1 ? 'checked ' : '' }} name="status">
+                                                <span class="toggle"></span>
+                                            </label>
+                                        </div>
                                     </td>
-
-
                                     <td class="text-center">
                                         <div class="btn-group">
 
-                                            <a href="{{ route('users.edit',$membership->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
+                                            <a href="{{ route('membresias.edit',$membership->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
-                                            <form method="post" action="{{ route('users.destroy', $membership->id) }} ">
+                                            <form method="post" action="{{ route('membresias.destroy', $membership->id) }} ">
                                                 <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-user">
                                                     @csrf
                                                     @method('DELETE')
@@ -137,10 +136,13 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <span>* Se muestra en la seccion de membresias al publico.</span>
+                        <br>
+                        <span>** Se muestra como la mejor opcion para elegir entre las membresias.</span>
                     </div>
-
+                   
                 </div>
+                
             </div>
             @else
             <div class="col-12">
