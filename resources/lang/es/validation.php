@@ -153,7 +153,7 @@ return [
     'attributes' => [
         'email'=>'correo electronico',
         'title'=>'titulo',
-        'discount'=>'precio con descuento',
+        'discount'=>'descuento',
         'price'=>'precio publico',
         'category'=>'categoria',
         'information'=> 'informacion',
@@ -168,7 +168,8 @@ return [
         'message'=>'mensaje',
         'agree_terms_and_conditions'=>'términos y condiciones',
         'phone'=>'teléfono',
-        'nickname'=>'alias'
+        'nickname'=>'alias',
+        'frecuencia_id'=>'frecuencia'
     
 
     ],

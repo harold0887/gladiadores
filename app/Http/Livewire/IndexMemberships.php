@@ -24,7 +24,7 @@ class IndexMemberships extends Component
             ->select('membresias.*', 'frecuencias.name as frecuencia')
             ->get();
 
-        //dd($memberships) ;
+     
         return view('livewire.index-memberships', compact('memberships'));
     }
 

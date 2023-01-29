@@ -9,8 +9,5 @@ class Membresia extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'status'
-    ];
+    protected $guarded=[];
 }
-s

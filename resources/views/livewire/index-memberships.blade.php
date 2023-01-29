@@ -60,9 +60,22 @@
                                         @endif
 
                                     </th>
-                                    <th scope="col">Frecuencia</th>
-                                    <th scope="col" style="cursor:pointer" wire:click="setSort('email')">Precio
-                                        @if($sortField=='email')
+                                    <th scope="col" style="cursor:pointer" wire:click="setSort('frecuencia')">Frecuencia
+                                        @if($sortField=='frecuencia')
+                                        @if($sortDirection=='asc')
+                                        <i class="fa-solid fa-arrow-down-a-z"></i>
+                                        @else
+                                        <i class="fa-solid fa-arrow-up-z-a"></i>
+                                        @endif
+                                        @else
+                                        <i class="fa-solid fa-sort mr-1"></i>
+                                        @endif
+
+
+
+                                    </th>
+                                    <th scope="col" style="cursor:pointer" wire:click="setSort('price')">Precio
+                                        @if($sortField=='price')
                                         @if($sortDirection=='asc')
                                         <i class="fa-solid fa-arrow-down-a-z"></i>
                                         @else
@@ -73,9 +86,19 @@
                                         @endif
                                     </th>
                                     <th scope="col">Descuento</th>
-                                    <th scope="col">Precio con descuento</th>
+                                    <th scope="col">Precio final</th>
 
-                                    <th scope="col">Visible *</th>
+                                    <th scope="col" style="cursor:pointer" wire:click="setSort('status')">Visible *
+                                        @if($sortField=='status')
+                                        @if($sortDirection=='asc')
+                                        <i class="fa-solid fa-arrow-down-a-z"></i>
+                                        @else
+                                        <i class="fa-solid fa-arrow-up-z-a"></i>
+                                        @endif
+                                        @else
+                                        <i class="fa-solid fa-sort mr-1"></i>
+                                        @endif
+                                    </th>
                                     <th scope="col">Principal **</th>
                                     <th scope="col">Acciones</th>
 
@@ -92,13 +115,13 @@
                                     <td>{{ $membership->frecuencia }}</td>
 
                                     <td>
-                                        {{ $membership->price }}
+                                        {{ number_format($membership->price,2)  }}
                                     </td>
                                     <td>
-                                        {{ $membership->discount }}
+                                        {{ number_format($membership->discount,2)   }}
                                     </td>
                                     <td>
-                                        {{ $membership->price_with_discount }}
+                                        {{ number_format($membership->price_with_discount,2)  }}
                                     </td>
                                     <td>
                                         <div class="togglebutton" wire:click="changeStatus({{ $membership->id }}, '{{ $membership->status }}')">
@@ -122,7 +145,7 @@
                                             <a href="{{ route('membresias.edit',$membership->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
                                             <form method="post" action="{{ route('membresias.destroy', $membership->id) }} ">
-                                                <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-user">
+                                                <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-membership">
                                                     @csrf
                                                     @method('DELETE')
                                                     <i class="material-icons ">close</i>
@@ -140,9 +163,9 @@
                         <br>
                         <span>** Se muestra como la mejor opcion para elegir entre las membresias.</span>
                     </div>
-                   
+
                 </div>
-                
+
             </div>
             @else
             <div class="col-12">

@@ -18,40 +18,41 @@
         <div class="collapse navbar-collapse justify-content-end " id="navigation">
             <ul class="navbar-nav">
                 <li class="nav-item  {{ $activePage == 'home' ? 'active':''}} ">
-                    <a href="{{route('home')}}" class="nav-link ">
-                        <i class="nc-icon nc-mobile"></i> {{ __('Home') }}
+                    <a href="{{route('home')}}" class="nav-link d-flex align-items-center">
+                    <i class="material-icons mr-2">home</i> {{ __('Home') }}
                     </a>
                 </li>
                 <li class="nav-item {{ $activePage == 'membership' ? 'active':''}}">
-                    <a href="{{ route('memberships') }}" class="nav-link">
-                        <i class="nc-icon nc-layout-11"></i> Membresias
+                    <a href="{{ route('memberships') }}" class="nav-link d-flex align-items-center">
+                    <i class="material-icons mr-2">card_membership</i> Membresías
                     </a>
                 </li>
                 @role('administrador')
                 <li class="nav-item {{ $activePage == 'dahboard' ? 'active':''}}">
-                    <a href="{{ route('dashboard') }}" class="nav-link">
-                        <i class="nc-icon nc-layout-11"></i> {{ __('Dashboard') }}
+                    <a href="{{ route('dashboard') }}" class="nav-link d-flex align-items-center">
+                    <i class="material-icons mr-2">dashboard</i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 @endrole
 
                 @guest
                 <li class="nav-item {{ $activePage == 'register' ? 'active':''}}">
-                    <a href="{{ route('register') }}" class="nav-link">
-                        <i class="nc-icon nc-book-bookmark"></i>{{ __('Register') }}
+                    <a href="{{ route('register') }}" class="nav-link d-flex align-items-center">
+                    <i class="material-icons mr-2">person_add</i>{{ __('Register') }}
                     </a>
                 </li>
                 <li class="nav-item   {{ $activePage == 'login' ? 'active':''}}">
-                    <a href="{{ route('login') }}" class="nav-link">
-                        <i class="nc-icon nc-tap-01"></i>{{ __('Login') }}
+                    <a href="{{ route('login') }}" class="nav-link d-flex align-items-center">
+                    <i class="material-icons mr-2">fingerprint</i>{{ __('Login') }}
                     </a>
                 </li>
                 @endif
 
                 @auth
                 <li class="nav-item  {{ $activePage == 'perfil' ? 'active':''}}  dropdown">
-                    <a class="nav-link nav-link-icon" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="nc-icon nc-circle-10"></i>
+                    <a class="nav-link nav-link-icon d-flex align-items-center" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons mr-2">account_circle</i>
+              
 
                         @php
                         $name = explode(" ", Auth::user()->name);

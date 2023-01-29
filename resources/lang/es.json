@@ -1133,6 +1133,9 @@
     "Phone":"Teléfono",
     "Create by":"Creado por",
     "Back to list":"Regresar a la lista",
-    "User information":"Informacion del usuario"
+    "User information":"Informacion del usuario",
+    "Membersip information": "Información de membresía",
+    "Price":"Precio",
+    "Discount":"Descuento"
 
 }

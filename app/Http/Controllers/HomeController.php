@@ -20,7 +20,7 @@ class HomeController extends Controller
     {
         $memberships = Membresia::where('status', 1)->get();
 
-        //return $membresias;
+        //return $memberships;   
         return view('membresias',compact('memberships'));
     }
 

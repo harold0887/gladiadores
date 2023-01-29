@@ -11,10 +11,11 @@ $(function () {
   collapseWhite();
   showModalLoad();
   confirmDeleteUser();
+  confirmDeleteMembership();
 });
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
-  $("#create-user-admin,#edit-user-admin").submit(function (e) {
+  $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(function (e) {
     $("#modal-spinner").modal("show");
   });
 }
@@ -25,6 +26,25 @@ function confirmDeleteUser() {
     event.preventDefault();
     Swal.fire({
       title: "¿Realmente quiere eliminar el usuario ? ",
+      //type: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar!"
+    }).then(function (result) {
+      if (result.value) {
+        form.submit();
+      }
+    });
+  });
+}
+function confirmDeleteMembership() {
+  $(".show-alert-delete-membership").click(function (event) {
+    var form = $(this).closest("form");
+    //var name = $(this).data("name");
+    event.preventDefault();
+    Swal.fire({
+      title: "¿Realmente quiere eliminar la membresía ? ",
       //type: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",

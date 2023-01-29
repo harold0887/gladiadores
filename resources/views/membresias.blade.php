@@ -11,18 +11,18 @@
 @section('content')
 
 <div class="content">
-    <div class="container p-0 border border-primary">
-        <div class="row border border-warning">
+    <div class="container p-0">
+        <div class="row ">
 
             @if(isset($memberships) && $memberships->count() > 0)
 
             @foreach($memberships as $membership)
 
 
-            <div class="col-lg-4 border border-danger m-0  {{$membership->main==0 ? 'order-1': ''}}">
+            <div class="col-lg-4  p-0 p-md-3">
                 <div class="card card-pricing  {{$membership->main==0 ? 'card-plain': ''}} " style=" overflow: hidden;">
                     <div class="card-header bg-warning">
-                        <h6 class="title">Membresia {{$membership->name}}</h6>
+                        <h6 class="title">{{$membership->name}}</h6>
                     </div>
                     @if($membership->main==1)
 
@@ -30,7 +30,11 @@
 
                     @endif
                     <div class="card-header text-center pt-4 pb-3 " style="height: 150px">
+
                         @if($membership->main==1)
+                        <h4 class="text-mindle mt-2 " style="color:grey; text-decoration: line-through">
+                            <small class=" text-mindle align-top me-1">$</small>{{$membership->price}}
+                        </h4>
                         <h1 class="font-weight-bold mt-2">
                             <small class=" text-mindle align-top me-1">$</small>{{$membership->price_with_discount}}<small class="text-md"></small>
                         </h1>
@@ -106,6 +110,5 @@
         demo.initDashboardPageCharts();
         demo.initVectorMap();
     });
-
 </script>
 @endpush
