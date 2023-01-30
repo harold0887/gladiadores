@@ -29,10 +29,11 @@
                     <div class="price-label"><span>Oferta</span></div>
 
                     @endif
+                    
                     <div class="card-header text-center pt-4 pb-3 " style="height: 150px">
 
                         @if($membership->main==1)
-                        <h4 class="text-mindle mt-2 " style="color:grey; text-decoration: line-through">
+                        <h4 class="text-mindle mt-0 text-left pl-5" style="color:grey; text-decoration: line-through">
                             <small class=" text-mindle align-top me-1">$</small>{{$membership->price}}
                         </h4>
                         <h1 class="font-weight-bold mt-2">
@@ -40,7 +41,7 @@
                         </h1>
 
                         @else
-                        <h2 class="text-mindle mt-2">
+                        <h2 class="text-mindle mt-5 pt-2 ">
                             <small class=" text-mindle align-top me-1">$</small>{{$membership->price_with_discount}}<small class="text-md"></small>
                         </h2>
                         @endif

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\AdminUserShow;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -42,5 +43,7 @@ Route::group(['middleware' => ['role:administrador']], function () {
 	
 	Route::get('dashboard/administradores', [IndexAdministrators::class, '__invoke'])->name('administradores.index');
 
-	Route::resource('dashboard/users', UserAdminController::class)->except(['delete']);
+	Route::resource('dashboard/users', UserAdminController::class)->except(['delete','show']);
+
+	Route::get('dashboard/users/{id}', [\App\Http\Livewire\AdminUserShow::class, '__invoke'])->name('users.show');
 });

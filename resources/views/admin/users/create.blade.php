@@ -13,7 +13,7 @@
 
 
 <div class="content">
-    <div class="container-fluid mt--6  ">
+    <div class="container mt--6  ">
         <div class="row m-0">
             <div class="col-xl-12 order-xl-1">
                 <div class="card">

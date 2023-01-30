@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\User;
+use App\Order;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
 
 class IndexUsers extends Component
 {
@@ -23,6 +25,10 @@ class IndexUsers extends Component
             //->whereNotIn('email', ['harold0887@hotmail.com'])
             ->orderBy($this->sortField, $this->sortDirection)
             ->get();
+     
+
+    
+        
         return view('livewire.index-users', compact('users'));
     }
 

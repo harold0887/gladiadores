@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Order;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -31,6 +32,12 @@ class User extends Authenticatable
         }
 
         return 'http://i.pravatar.cc/200';
+    }
+
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 
 

@@ -49,7 +49,6 @@
                     </div>
 
                     <div class="table-responsive  p-md-4 " id="users-table">
-
                         <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
                             <thead>
                                 <tr>
@@ -89,8 +88,30 @@
 
                             <tbody>
                                 @foreach ($users as $user)
+                                @php
+                                $vcountSuccess= 0;
+                                $vcountpending=0
+                                @endphp
+                                @if(!empty($user->orders))
 
-                                <tr>
+                                @foreach($user->orders as $v)
+
+                                @if($v->status_id ==1)
+                                @php
+                                $vcountpending++;
+                                @endphp
+                                @elseif($v->status_id ==2))
+                                @php
+                                $vcountSuccess++;
+                                @endphp
+                                @endif
+                                @endforeach
+                                @endif
+
+
+
+                                <tr class="{{$vcountSuccess > 0 ? 'table-success' : ''}} {{$vcountpending > 0 ? 'table-warning' : ''}}">
+
 
                                     <td class="px-1 py-0 rounded">
                                         <span class="avatar avatar-sm rounded-circle">
@@ -112,20 +133,13 @@
                                     <td>
                                         {{ $user->nickname }}
                                     </td>
-                                    <!-- <td>
-                                        @if(!empty($user->roles()->get()))
-                                        @foreach($user->getRoleNames() as $v)
-                                        <label class="badge badge-primary text-white btn-link">{{ $v }}</label>
-                                        <br>
-                                        @endforeach
-                                        @endif
-                                    </td> -->
+
                                     <td>
                                         {{ $user->created_by }}
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
-
+                                            <a href="{{ route('users.show',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">visibilitys</i></a>
                                             <a href="{{ route('users.edit',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
                                             <form method="post" action="{{ route('users.destroy', $user->id) }} ">
