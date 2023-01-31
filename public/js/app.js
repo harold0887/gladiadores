@@ -12,14 +12,7 @@ $(function () {
   showModalLoad();
   confirmDeleteUser();
   confirmDeleteMembership();
-  $('#select-admin').on('change', function () {
-    //alert(this.value)
-
-    Livewire.emit("setUserSelect", this.value);
-    //alert('se envo');
-  });
 });
-
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
   $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(function (e) {
@@ -133,7 +126,7 @@ Livewire.on("removeAdminConfirm", function ($message) {
 });
 Livewire.on("confirmAdminRegister", function ($message) {
   Swal.fire({
-    title: "Autorizar",
+    title: "Autorizar ?",
     text: $message["message"],
     //icon: "info",
     showCancelButton: true,

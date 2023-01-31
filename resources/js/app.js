@@ -4,15 +4,9 @@ $(function () {
   confirmDeleteUser();
   confirmDeleteMembership();
 
-  $('#select-admin').on('change', function (){
-    //alert(this.value)
   
-    Livewire.emit("setUserSelect", this.value);
-    //alert('se envo');
- 
-  });
 
-     
+  
 });
 
 
@@ -160,7 +154,7 @@ Livewire.on("removeAdminConfirm", function ($message) {
 
 Livewire.on("confirmAdminRegister", function ($message) {
   Swal.fire({
-      title: "Autorizar",
+      title: "Autorizar ?",
       text: $message["message"],
       //icon: "info",
       showCancelButton: true,

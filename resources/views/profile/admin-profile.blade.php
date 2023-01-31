@@ -32,9 +32,7 @@
                         </p>
                     </div>
                     <p class="description text-center">
-                        {{ __('I like the way you work it') }}
-                        <br> {{ __('No diggity') }}
-                        <br> {{ __('I wanna bag it up') }}
+                        {{$frase[0]}}
                     </p>
                 </div>
                 <div class="card-footer">
@@ -63,7 +61,7 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
         <div class="col-md-8 text-center" id="profile-tour">
             @include('alerts.error_self_update', ['key' => 'not_allow_profile'])

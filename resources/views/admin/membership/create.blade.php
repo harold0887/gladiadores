@@ -13,9 +13,9 @@
 
 
 <div class="content">
-    <div class="container-fluid mt--6  ">
-        <div class="row m-0">
-            <div class="col-xl-12 order-xl-1">
+    <div class="container mt--6  ">
+        <div class="row m-0 justify-content-center">
+            <div class="col-xl-8 order-xl-1">
                 <div class="card">
                     <div class="card-header">
                         <div class="row align-items-center">

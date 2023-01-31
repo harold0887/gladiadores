@@ -2,21 +2,22 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Agregar Administrador
+                <h5 class="modal-title" id="exampleModalLabel">
+                    Agregar Administrador
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="$set('userSelect', '')" >
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click="$set('userSelect', '')">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body px-3">
 
 
                 <form wire:submit.prevent="submit()">
                     <div class="row justify-content-center">
-                        <div  class="form-group col-10">
+                        <div class="form-group col-12 col-md-10">
                             <label for="note">Seleccione un usuario para asignar permisos de administrador</label>
 
-                            <select id="select-admin" class="form-control {{ $errors->has('userSelect') ? ' is-invalid border-danger' : '' }} " data-style="btn-ouline-primary" data-live-search="true" wire:model="userSelect"   >
+                            <select id="select-admin" class="form-control {{ $errors->has('userSelect') ? ' is-invalid border-danger' : '' }} " data-style="btn-ouline-primary" data-live-search="true" wire:model="userSelect">
                                 <option value="" disabled selected>Selecciona un usuario...</option>
                                 @if (isset($users) && $users->count() > 0)
                                 @foreach ($users as $user)
@@ -51,4 +52,3 @@
 
 
 </div>
-

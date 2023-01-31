@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Frase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileRequest;
@@ -11,7 +12,13 @@ class ProfileAdminController extends Controller
 {
     public function edit()
     {
-        return view('profile.admin-profile');
+        $frase = Frase::orderByRaw("RAND()")->limit(1)
+        
+       ->pluck("frase");
+
+   
+//dd($frase);
+        return view('profile.admin-profile', compact('frase'));
     }
 
 
