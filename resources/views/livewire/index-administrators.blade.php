@@ -1,14 +1,11 @@
 
 
-
 <div class="content">
-@include('modal.add-admin')
+  
     <div class="container-fluid mt--6  ">
- 
+      
         <div class="row m-0">
-            <div class="col-12">
-          
-            </div>
+
             <div class="col-12 border-bottom ">
                 <h4 class="m-0  text-center">{{ __('Users') }}</h4>
             </div>
@@ -16,7 +13,7 @@
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#showOrderModal">
+                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#modal-add-admin">
                             <i class="fa-solid fa-plus"></i>
                             <span>Agregar administrador</span>
                         </a>
@@ -50,11 +47,6 @@
             <div class="col ">
                 <div class="card">
 
-
-                    <div class="col-12 ">
-                        @include('alerts.success')
-                        @include('alerts.errors')
-                    </div>
 
                     <div class="table-responsive  p-md-4 " id="users-table">
 
@@ -121,33 +113,28 @@
                                         {{ $user->nickname }}
                                     </td>
                                     <!-- <td>
-                                        @if(!empty($user->roles()->get()))
-                                        @foreach($user->getRoleNames() as $v)
-                                        <label class="badge badge-primary text-white btn-link">{{ $v }}</label>
-                                        <br>
-                                        @endforeach
-                                        @endif
-                                    </td> -->
+                                            @if(!empty($user->roles()->get()))
+                                            @foreach($user->getRoleNames() as $v)
+                                            <label class="badge badge-primary text-white btn-link">{{ $v }}</label>
+                                            <br>
+                                            @endforeach
+                                            @endif
+                                        </td> -->
                                     <td>
                                         {{ $user->created_by }}
                                     </td>
                                     <td class="text-center">
-
                                         <div class="dropdown">
-                                            <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="nc-icon nc-bullet-list-67"></i>
+                                            <a class="btn btn-sm btn-outline-primary btn-icon-only text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
                                             </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                                <a class="dropdown-item p-0 " style="cursor: pointer;" wire:click="removeAdminConfirm('{{$user->id}}','{{$user->name}}')">
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow ">
+                                                <a class="dropdown-item p-0 " style="cursor:pointer;" wire:click="removeAdminConfirm('{{$user->id}}','{{$user->name}}')">
                                                     <button class="btn btn-icon  text-danger p-0 btn-link">
                                                         <span class=" btn-inner--icon"><i class="material-icons">close</i></span>
                                                     </button>
                                                     <span class="mx-3">Remover permisos de administrador</span>
                                                 </a>
-
-
-
                                             </div>
                                         </div>
 

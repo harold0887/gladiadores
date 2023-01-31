@@ -1,16 +1,27 @@
 $(function () {
   collapseWhite();
   showModalLoad();
-  confirmDeleteUser()
-  confirmDeleteMembership()
+  confirmDeleteUser();
+  confirmDeleteMembership();
+
+  $('#select-admin').on('change', function (){
+    //alert(this.value)
+  
+    Livewire.emit("setUserSelect", this.value);
+    //alert('se envo');
+ 
+  });
+
+     
 });
+
+
 
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
   $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(function (e) {
     $("#modal-spinner").modal("show");
   });
-
 
 }
 
@@ -94,7 +105,7 @@ function collapseWhite() {
           .removeClass("bg-white");
       });
   }
-}
+};
 
 Livewire.on("reload", function () {
   setTimeout("location.reload()", 2000);
@@ -143,5 +154,22 @@ Livewire.on("removeAdminConfirm", function ($message) {
     if (result.value) {
       Livewire.emit("removeAdmin", $message["id"]);
     }
+  });
+});
+
+
+Livewire.on("confirmAdminRegister", function ($message) {
+  Swal.fire({
+      title: "Autorizar",
+      text: $message["message"],
+      //icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, autorizar!",
+  }).then((result) => {
+      if (result.value) {
+          Livewire.emit("authorizeAdmin");
+      }
   });
 });

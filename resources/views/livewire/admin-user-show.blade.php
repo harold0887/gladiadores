@@ -1,5 +1,6 @@
+@include('modal.add-membresia')
 <div class="content">
-    @include('modal.add-membresia')
+
     <div class="container-fluid mt--6  ">
         <div class="row m-0">
 
@@ -213,4 +214,4 @@
         </div>
     </div>
 </div>
-@include('includes.alerts')s
+@include('includes.alerts')

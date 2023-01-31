@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndexAdministrators extends Component
 {
-    public $search = '', $newAdministrador='';
+    public $search = '', $userSelect='';
     public $selectedInput = '';
     public $sortDirection = 'asc';
     public $sortField = 'id';
@@ -16,11 +16,13 @@ class IndexAdministrators extends Component
     protected $listeners = [
         'authorizeAdmin' => 'authorizeAdmin',
         'removeAdmin' => 'removeAdmin',
-        'setUserSelect'=>'setUserSelect'
+        'setUserSelect'=>'setUserSelect',
+        'refreshComponent' => '$refresh'
     ];
     public function render()
     {
         $users = User::whereNotIn('email', ['arnulfoacosta0887@gmail.com'])->get();
+
         $administradores = User::role('administrador')->where(function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%')
                 ->orWhere('email', 'like', '%' . $this->search . '%')
@@ -44,7 +46,8 @@ class IndexAdministrators extends Component
     }
 
     public function setUserSelect($id){
-$this->userSelect=$id;
+        $this->userSelect=$id;
+        $this->emit('refreshComponent');
     }
 
     public function  removeAdminConfirm($id, $name)
@@ -54,6 +57,7 @@ $this->userSelect=$id;
             'id' => $id,
         ]);
     }
+
 
 
     public function removeAdmin(Request $request, $id)
@@ -70,9 +74,9 @@ $this->userSelect=$id;
                 } else {
                     $user = User::findOrFail($id);
 
-                    $rolesSum = User::role(['administrador', 'comite'])->get();
+                    $rolesSum = User::role(['administrador'])->get();
 
-                    if ($rolesSum->count() > 2) {
+                    if ($rolesSum->count() > 1) {
                         $user->removeRole('administrador');
   
 
@@ -101,6 +105,45 @@ $this->userSelect=$id;
     {
         $this->emit('reload');
     }
+
+
+   
+
+
+    public function authorizeAdmin(Request $request)
+    {
+    
+        if ($request->user()->hasAnyRole(['administrador','super-admin'])) {
+
+            try {
+                $user = User::findOrFail($this->userSelect);
+                if ($user->hasRole('administrador')) {
+                    $this->emit('error', [
+                        'message' => 'El usuario ' . $user->name . ' ya tiene un rol de administrador',
+                    ]);
+                } else {
+                    $user->assignRole('administrador');
+
+                    $this->emit('success-auto-close', [
+                        'message' => 'El registro se ha realizado con  éxito',
+                    ]);
+                    $this->reset(['userSelect']);
+                    $this->emit('reload');
+                }
+            } catch (\Throwable $e) {
+                $this->emit('error', [
+                    'message' => 'Ocurrio un error al registrar los permisos - ' . $e->getMessage(),
+                ]);
+            }
+        } else {
+            $this->emit('error', [
+                'message' => 'No tiene permisos para dar de alta mas admistradores',
+            ]);
+        }
+    }
+
+
+    
 
 
 
