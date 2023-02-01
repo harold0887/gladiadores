@@ -36,33 +36,26 @@
                             </p>
                         </div>
                         <p class="description text-center">
-                            {{ __('I like the way you work it') }}
-                            <br> {{ __('No diggity') }}
-                            <br> {{ __('I wanna bag it up') }}
+                        {{$frase[0]}}
                         </p>
                     </div>
                     <div class="card-footer">
                         <hr>
                         <div class="button-container">
                             <div class="row">
-                                <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                                    <h5>{{ __('12') }}
+                                <div class="col-6 ml-auto">
+                                    <h5>{{ $membresias->count()}}
                                         <br>
-                                        <small>{{ __('Files') }}</small>
+                                        <small>Membresias</small>
                                     </h5>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                                    <h5>{{ __('2GB') }}
+                                <div class="col-6 ml-auto mr-auto">
+                                    <h5>{{ $membresiasActive->count()}}
                                         <br>
-                                        <small>{{ __('Used') }}</small>
+                                        <small>Vigente</small>
                                     </h5>
                                 </div>
-                                <div class="col-lg-3 mr-auto">
-                                    <h5>{{ __('24,6$') }}
-                                        <br>
-                                        <small>{{ __('Spent') }}</small>
-                                    </h5>
-                                </div>
+
                             </div>
                         </div>
                     </div>

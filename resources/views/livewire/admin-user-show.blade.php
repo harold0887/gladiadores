@@ -11,23 +11,21 @@
                     </div>
                     <div class="card-body">
                         <div class="author">
-                            <a href="#">
+                           
                                 @if(isset($user->picture))
                                 <img class="avatar border-gray" src="{{ Storage::url($user->picture) }}" alt="...">
                                 @else
                                 <img class="avatar border-gray" src="{{ asset('img/No Profile Picture.png') }}" alt="...">
                                 @endif
 
-                                <h5 class="title">{{$user->name}}</h5>
-                            </a>
+                                <h5 class="title text-primary">{{$user->name}}</h5>
+                            
                             <p class="description">
                                 @ {{$user->nickname}}
                             </p>
                         </div>
                         <p class="description text-center">
-                            {{ __('I like the way you work it') }}
-                            <br> {{ __('No diggity') }}
-                            <br> {{ __('I wanna bag it up') }}
+                        {{$frase[0]}}
                         </p>
                     </div>
                     <div class="card-footer">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Gate;
 use App\User;
+use App\Frase;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
@@ -12,7 +13,15 @@ class ProfileController extends Controller
 {
     public function profile()
     {
-        return view('profile.user-profile');
+        $user = User::findOrFail(auth()->user()->id);
+
+    
+        $membresias =  $user ->orders()->orderBy('fin', 'desc')->get();
+        $membresiasActive = $user->orders()->where('status_id',2);
+        $frase = Frase::orderByRaw("RAND()")
+        ->limit(1)
+       ->pluck("frase");
+        return view('profile.user-profile', compact('frase','membresias','membresiasActive'));
     }
 
 

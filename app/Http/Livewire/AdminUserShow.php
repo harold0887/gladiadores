@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\User;
+use App\Frase;
 use Livewire\Component;
 
 class AdminUserShow extends Component
@@ -20,8 +21,11 @@ class AdminUserShow extends Component
 
         $membresias =  $this->user->orders()->orderBy('fin', 'desc')->get();
         $membresiasActive =  $this->user->orders->where('status_id',2);
+        $frase = Frase::orderByRaw("RAND()")
+        ->limit(1)
+       ->pluck("frase");
 
-        return view('livewire.admin-user-show', compact('membresias','membresiasActive'))
+        return view('livewire.admin-user-show', compact('frase','membresias','membresiasActive'))
         ->extends('layouts.app', [
             'title' =>  $this->user->name,
             'navClass' => 'bg-default',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use App\Frase;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,13 +13,16 @@ class ProfileAdminController extends Controller
 {
     public function edit()
     {
-        $frase = Frase::orderByRaw("RAND()")->limit(1)
-        
+        $frase = Frase::orderByRaw("RAND()")
+        ->limit(1)
        ->pluck("frase");
 
-   
-//dd($frase);
-        return view('profile.admin-profile', compact('frase'));
+       $user = User::findOrFail(auth()->user()->id);
+
+    
+       $membresias =  $user ->orders()->orderBy('fin', 'desc')->get();
+       $membresiasActive = $user->orders()->where('status_id',2);
+        return view('profile.admin-profile', compact('frase','membresias','membresiasActive'));
     }
 
 
