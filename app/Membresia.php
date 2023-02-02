@@ -10,4 +10,10 @@ class Membresia extends Model
     use HasFactory;
 
     protected $guarded=[];
+
+
+    public function frecuencia()
+    {
+        return $this->belongsTo(Frecuencia::class);
+    }
 }

@@ -39,6 +39,7 @@
 </head>
 <body class="{{ $class }}">
     <livewire:add-admin-render/>
+    <livewire:add-subscription-render/>
 
     @if (Route::is('dashboard','dashboard.*','users.*','administradores.*','membresias.*'))
     @include('layouts.page_templates.admin')

@@ -26,7 +26,8 @@ class AddAdminRender extends Component
          $user = User::findOrFail($this->userSelect);
       
          $this->emit('confirmAdminRegister', [
-             'message' => "Se van a dar permisos de administrador de sistema a " . $user->name
+             'message' => "Se van a dar permisos de administrador de sistema a " . $user->name,
+             'id'=>  $user->id
          ]);
      }
 }

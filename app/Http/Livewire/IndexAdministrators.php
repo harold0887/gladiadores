@@ -8,15 +8,13 @@ use Illuminate\Http\Request;
 
 class IndexAdministrators extends Component
 {
-    public $search = '', $userSelect='';
-    public $selectedInput = '';
+    public $search = '';
     public $sortDirection = 'asc';
     public $sortField = 'id';
 
     protected $listeners = [
         'authorizeAdmin' => 'authorizeAdmin',
         'removeAdmin' => 'removeAdmin',
-        'setUserSelect'=>'setUserSelect',
         'refreshComponent' => '$refresh'
     ];
     public function render()
@@ -110,13 +108,15 @@ class IndexAdministrators extends Component
    
 
 
-    public function authorizeAdmin(Request $request)
+    public function authorizeAdmin(Request $request, $newAdmin)
     {
     
         if ($request->user()->hasAnyRole(['administrador','super-admin'])) {
 
+            
+        
             try {
-                $user = User::findOrFail($this->userSelect);
+                $user = User::findOrFail($newAdmin);
                 if ($user->hasRole('administrador')) {
                     $this->emit('error', [
                         'message' => 'El usuario ' . $user->name . ' ya tiene un rol de administrador',
@@ -125,9 +125,9 @@ class IndexAdministrators extends Component
                     $user->assignRole('administrador');
 
                     $this->emit('success-auto-close', [
-                        'message' => 'El registro se ha realizado con  éxito',
+                        'message' => $user->name.', ahora es administrador del sistema.',
                     ]);
-                    $this->reset(['userSelect']);
+                 
                     $this->emit('reload');
                 }
             } catch (\Throwable $e) {

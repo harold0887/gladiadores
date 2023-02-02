@@ -152,10 +152,10 @@ Livewire.on("removeAdminConfirm", function ($message) {
 });
 
 
-Livewire.on("confirmAdminRegister", function ($message) {
+Livewire.on("confirmAdminRegister", function ($data) {
   Swal.fire({
       title: "Autorizar ?",
-      text: $message["message"],
+      text: $data["message"],
       //icon: "info",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -163,7 +163,25 @@ Livewire.on("confirmAdminRegister", function ($message) {
       confirmButtonText: "Si, autorizar!",
   }).then((result) => {
       if (result.value) {
-          Livewire.emit("authorizeAdmin");
+          Livewire.emit("authorizeAdmin",$data['id']);
       }
   });
 });
+
+
+Livewire.on("confirmMembershipRegister", function ($data) {
+  Swal.fire({
+      title: "Registrar ?",
+      text: $data["message"],
+      //icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, registrar!",
+  }).then((result) => {
+      if (result.value) {
+          //Livewire.emit("authorizeAdmin",$data['id']);
+      }
+  });
+});
+
