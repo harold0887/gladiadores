@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
 
     <meta charset="utf-8">
@@ -20,12 +21,6 @@
 
 
 
-    <!-- select Boostrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-
-    <!--  Boostrap mio -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/paper-dashboard.css') }}" rel="stylesheet">
@@ -37,9 +32,10 @@
 
     @livewireStyles
 </head>
+
 <body class="{{ $class }}">
-    <livewire:add-admin-render/>
-    <livewire:add-subscription-render/>
+    <livewire:add-admin-render />
+    <livewire:add-subscription-render />
 
     @if (Route::is('dashboard','dashboard.*','users.*','administradores.*','membresias.*'))
     @include('layouts.page_templates.admin')
@@ -85,8 +81,7 @@
     <script src="{{ asset('demo/bootstrap-tourist.js') }}"></script>
     <!--  Plugin for the Bootstrap Table -->
     <script src="{{ asset('/js/plugins/nouislider.min.js') }}"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbVUXb1ZCXDbVu5V-0AjxpikPl6jmgpbQ"></script>
+ 
     <!-- Chart JS -->
     <script src="{{ asset('/js/plugins/chartjs.min.js') }}"></script>
     <!--  Notifications Plugin    -->
@@ -99,13 +94,12 @@
     <!-- Sharrre libray -->
     <script src="{{ asset('/demo/jquery.sharrre.js') }}"></script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- sweetalert2 -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+   
     <!-- iconos awesome -->
     <script src="https://kit.fontawesome.com/58c5330fd0.js" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- select Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
@@ -115,10 +109,13 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+    
+ 
     @stack('scripts')
 
 
     @include('includes.fixed-plugin-js')
     @livewireScripts
 </body>
+
 </html>

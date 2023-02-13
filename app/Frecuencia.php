@@ -10,7 +10,7 @@ class Frecuencia extends Model
     use HasFactory;
 
 
-    public function membresia()
+    public function membresias()
     {
         return $this->hasMany(membresia::class);
     }

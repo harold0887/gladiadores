@@ -169,7 +169,9 @@ return [
         'agree_terms_and_conditions'=>'términos y condiciones',
         'phone'=>'teléfono',
         'nickname'=>'alias',
-        'frecuencia_id'=>'frecuencia'
+        'frecuencia_id'=>'frecuencia',
+        'membershipSelect'=> 'suscripcion',
+        'type'=> 'tipo de suscripción',
     
 
     ],

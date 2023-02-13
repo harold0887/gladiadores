@@ -66,6 +66,18 @@
                                         @endif
 
                                     </th>
+                                    <th scope="col" style="cursor:pointer" wire:click="setSort('nickname')">Alias
+                                        @if($sortField=='nickname')
+                                        @if($sortDirection=='asc')
+                                        <i class="fa-solid fa-arrow-down-a-z"></i>
+                                        @else
+                                        <i class="fa-solid fa-arrow-up-z-a"></i>
+                                        @endif
+                                        @else
+                                        <i class="fa-solid fa-sort mr-1"></i>
+                                        @endif
+
+                                    </th>
                                     <th scope="col" style="cursor:pointer" wire:click="setSort('email')">{{ __('Email') }}
                                         @if($sortField=='email')
                                         @if($sortDirection=='asc')
@@ -78,7 +90,7 @@
                                         @endif
                                     </th>
                                     <th scope="col">{{ __('Phone') }}</th>
-                                    <th scope="col">Alias</th>
+                                    
 
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Acciones</th>
@@ -100,7 +112,7 @@
                                 @php
                                 $vcountpending++;
                                 @endphp
-                                @elseif($v->status_id ==2))
+                                @elseif($v->status_id ==2)
                                 @php
                                 $vcountSuccess++;
                                 @endphp
@@ -123,6 +135,10 @@
                                         </span>
                                     </td>
                                     <td>{{ $user->name }}</td>
+                                    <td>
+                                        {{ $user->nickname }}
+                                    </td>
+
 
                                     <td>
                                         {{ $user->email }}
@@ -130,10 +146,7 @@
                                     <td>
                                         {{ $user->phone }}
                                     </td>
-                                    <td>
-                                        {{ $user->nickname }}
-                                    </td>
-
+                                  
                                     <td>
                                         {{ $user->created_by }}
                                     </td>

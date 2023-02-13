@@ -25,6 +25,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('5514404046'),
             'phone'=>'5525182443',
             'created_by'=>'System',
+            'renovacion'=>1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -37,6 +38,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('5514404046'),
             'phone'=>'5525182445',
             'created_by'=>'System',
+            'renovacion'=>1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -49,6 +51,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('5514404046'),
             'phone'=>'5585625311',
             'created_by'=>'System',
+            'renovacion'=>1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -71,6 +74,7 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('secret'),
                 'phone'=>'55251823'.$i,
                 'created_by'=>'System',
+                'renovacion'=>1,
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

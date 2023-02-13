@@ -1,22 +1,27 @@
+import Swal from "sweetalert2";
 $(function () {
   collapseWhite();
   showModalLoad();
   confirmDeleteUser();
   confirmDeleteMembership();
 
-  
+ 
+  $('#datetimepicker').datetimepicker();
 
-  
+
 });
+
+
 
 
 
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
-  $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(function (e) {
-    $("#modal-spinner").modal("show");
-  });
-
+  $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(
+    function (e) {
+      $("#modal-spinner").modal("show");
+    }
+  );
 }
 
 function confirmDeleteUser() {
@@ -39,7 +44,6 @@ function confirmDeleteUser() {
   });
 }
 
-
 function confirmDeleteMembership() {
   $(".show-alert-delete-membership").click(function (event) {
     var form = $(this).closest("form");
@@ -59,15 +63,6 @@ function confirmDeleteMembership() {
     });
   });
 }
-
-
-
-
-
-
-
-
-
 
 function collapseWhite() {
   // modificacion de  navbar
@@ -99,14 +94,39 @@ function collapseWhite() {
           .removeClass("bg-white");
       });
   }
-};
+}
 
 Livewire.on("reload", function () {
   setTimeout("location.reload()", 2000);
 });
 Livewire.on("error", function ($message) {
-  swal.fire("Error!", $message["message"], "error");
+  Swal.fire("¡error!", $message["message"], "error");
 });
+
+Livewire.on("success", function ($message) {
+  Swal.fire("¡Buen trabajo!", $message["message"], "success");
+});
+
+Livewire.on("confirmarCancelacion", function ($message) {
+  Swal.fire({
+    title: "Cancelar la suscripción ?",
+    text: $message["message"],
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, cancelar suscripción!",
+  }).then((result) => {
+    if (result.value) {
+      Livewire.emit("CancelarSuscripcion");
+    }
+  });
+});
+
+
+
+
+
 
 Livewire.on("success-auto-close", function ($message) {
   Swal.fire({
@@ -119,7 +139,6 @@ Livewire.on("success-auto-close", function ($message) {
   });
 });
 
-
 Livewire.on("warning", function ($message) {
   text = $message["message"] + "<b>" + $message["message1"] + "</b>";
 
@@ -129,10 +148,6 @@ Livewire.on("warning", function ($message) {
     type: "warning",
     showCancelButton: false,
   });
-});
-
-Livewire.on("success-fixed", function ($message) {
-  Swal.fire("¡Buen trabajo!", $message["message"], "success");
 });
 
 Livewire.on("removeAdminConfirm", function ($message) {
@@ -151,37 +166,71 @@ Livewire.on("removeAdminConfirm", function ($message) {
   });
 });
 
-
 Livewire.on("confirmAdminRegister", function ($data) {
   Swal.fire({
-      title: "Autorizar ?",
-      text: $data["message"],
-      //icon: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, autorizar!",
+    title: "Autorizar ?",
+    text: $data["message"],
+    //icon: "info",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, autorizar!",
   }).then((result) => {
-      if (result.value) {
-          Livewire.emit("authorizeAdmin",$data['id']);
-      }
+    if (result.value) {
+      Livewire.emit("authorizeAdmin", $data["id"]);
+    }
   });
 });
-
 
 Livewire.on("confirmMembershipRegister", function ($data) {
   Swal.fire({
-      title: "Registrar ?",
-      text: $data["message"],
-      //icon: "info",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, registrar!",
+    title: "Registrar ?",
+    html:
+      $data["message"] +
+      "</br></br>Fecha de inicio: " +
+      $data["date"] +
+      "</br></br> Frecuencia: " +
+      $data["frecuencia"] +
+      "</br></br>Precio: <b>" +
+      $data["price"] +
+      "</b> MXN",
+
+    //icon: "info",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, registrar!",
   }).then((result) => {
-      if (result.value) {
-          //Livewire.emit("authorizeAdmin",$data['id']);
-      }
+    if (result.value) {
+      Livewire.emit("addSubscription", $data["id"],$data["date"]);
+    }
   });
 });
 
+Livewire.on("activeDatePicker", function () {
+  initDateTimePicker();
+});
+
+// function initDateTimePicker() {
+
+
+//     $("#dateMembership").datetimepicker({
+//       format: "YYYY-MM-DD HH:mm:ss",
+//       icons: {
+//         time: "fa fa-clock-o",
+//         date: "fa fa-calendar",
+//         up: "fa fa-chevron-up",
+//         down: "fa fa-chevron-down",
+//         previous: "fa fa-chevron-left",
+//         next: "fa fa-chevron-right",
+//         today: "fa fa-screenshot",
+//         clear: "fa fa-trash",
+//         close: "fa fa-remove",
+//       },
+//     });
+
+
+ 
+
+
+// }

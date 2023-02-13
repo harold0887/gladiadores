@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-                $table->string('concept');
+                $table->foreignId('membresia_id')->constrained('membresias');
                 $table->decimal('amount', $precision = 8, $scale = 2);
                 $table->mediumText('description');
                 $table->timestamp('date_payment')->nullable();

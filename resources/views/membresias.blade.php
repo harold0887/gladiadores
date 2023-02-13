@@ -20,7 +20,7 @@
 
 
             <div class="col-lg-4  p-0 p-md-3">
-                <div class="card card-pricing  {{$membership->main==0 ? 'card-plain': ''}} " style=" overflow: hidden;">
+                <div class="card card-pricing  {{$membership->main==0 ? 'card-plain border': 'border border-warning'}} " style=" overflow: hidden;">
                     <div class="card-header bg-warning">
                         <h6 class="title">{{$membership->name}}</h6>
                     </div>
@@ -34,7 +34,7 @@
 
                         @if($membership->main==1)
                         <h4 class="text-mindle mt-0 text-left pl-5" style="color:grey; text-decoration: line-through">
-                            <small class=" text-mindle align-top me-1">$</small>{{$membership->price}}
+                            <small class=" text-mindle align-top me-1">$ {{$membership->price}}</small>
                         </h4>
                         <h1 class="font-weight-bold mt-2">
                             <small class=" text-mindle align-top me-1">$</small>{{$membership->price_with_discount}}<small class="text-md"></small>

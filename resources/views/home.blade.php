@@ -12,7 +12,11 @@
 
 <div class="content">
     <div class="container-fluid">
+        
     <div class="row">
+    <div class="col-md-12">
+
+    </div>
         <div class="col-md-4">
             <div class="card card-login card-hidden mb-3">
                 <div class="card-header card-header-primary text-center">

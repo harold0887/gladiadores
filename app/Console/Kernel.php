@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        'App\Console\Commands\AddSubscription',
     ];
 
     /**
@@ -25,10 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        if (config('app.is_demo')){
-            $schedule->command('migrate:fresh --seed')->everyFifteenMinutes();
-            $schedule->command('image:seed')->everyFifteenMinutes();
-        }
+        // if (config('app.is_demo')){
+        //     $schedule->command('migrate:fresh --seed')->everyFifteenMinutes();
+        //     $schedule->command('image:seed')->everyFifteenMinutes();
+        // }
+        //$schedule->command('add:subscription')->dailyAt('8:00');
+
+        $schedule->command('add:subscription')->everyMinute();
+       
     }
 
     /**
