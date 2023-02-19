@@ -35,6 +35,12 @@ class StatusSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('status')->insert([
+            'name' => 'Suspendida',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
         
     }
 }

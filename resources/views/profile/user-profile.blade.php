@@ -4,7 +4,7 @@
 'folderActive' => '',
 'elementActive' => '',
 'title'=>'Mi Perfil',
-'navbarClass'=>'bg-dark',
+'navbarClass'=>'bg-dark py-3',
 'activePage'=>'perfil',
 
 
@@ -12,6 +12,7 @@
 ])
 
 @section('content')
+@include('includes.spinner')
 <div class="content">
     <div class="container p-0">
         <div class="row ">
@@ -46,7 +47,7 @@
                                 <div class="col-6 ml-auto">
                                     <h5>{{ $membresias->count()}}
                                         <br>
-                                        <small>Membresias</small>
+                                        <small>Suscripciones</small>
                                     </h5>
                                 </div>
                                 <div class="col-6 ml-auto mr-auto">
@@ -64,7 +65,7 @@
             </div>
             <div class="col-md-8 text-center" id="profile-tour">
 
-                <form class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                <form id="edit-user-profile"  class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card shadow">
@@ -122,7 +123,7 @@
                         </div>
                     </div>
                 </form>
-                <form class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.password') }}" method="POST">
+                <form   class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.password') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card shadow">

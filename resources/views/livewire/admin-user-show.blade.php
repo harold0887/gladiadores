@@ -1,23 +1,8 @@
 <div class="content p-0">
-
     <div class="container-fluid mt--6  ">
         <div class="row m-0">
-            <div class="col-12">
-                @if($user->orders->count() > 0)
+          
 
-
-                @foreach ($user->orders as $order)
-
-                @if ($order->status_id==2 && \Carbon\Carbon::create($order->fin)->subDay() )
-                {{\Carbon\Carbon::create(now())}}
-                <br>
-                @endif
-
-
-                @endforeach
-                @endif
-
-            </div>
             <div class="col-12 col-md-9">
                 <div class="card card-user">
                     <div class="image">
@@ -38,25 +23,25 @@
                             <p class="description">
                                 @ {{$user->nickname}}
                             </p>
-                            @if($user->renovacion==1)
+                            <!-- @if($user->renovacion==1)
                             <button class="btn btn-outline-primary btn-sm" wire:click="changeStatus()">
                                 cancelar suscripción
                             </button>
-                            @endif
+                            @endif -->
                         </div>
 
                     </div>
                     <div class="card-footer">
                         <hr>
                         <div class="button-container">
-                            <div class="row">
+                            <div class="row justify-content-between">
                                 <div class="col-12 col-lg-4 ">
                                     <h5>{{ $membresias->count()}}</h5>
 
                                     <p>Membresias</p>
 
                                 </div>
-                                <div class="col-12 col-lg-4 ">
+                                <!-- <div class="col-12 col-lg-4 ">
 
                                     @if($user->renovacion==1)
                                     <input class="bootstrap-switch" type="checkbox" data-toggle="switch" checked data-on-label="<i class='nc-icon nc-check-2'></i>" data-off-label="<i class='nc-icon nc-simple-remove'></i>" data-on-color="success" data-off-color="success" disabled />
@@ -66,7 +51,7 @@
 
 
                                     <p>Renovacion automatica</p>
-                                </div>
+                                </div> -->
 
                                 <div class="col-12 col-lg-4 ">
                                     <h5>{{ $membresiasActive->count()}} </h5>
@@ -104,11 +89,12 @@
                     @endif
 
 
-                    <div class="col-12 text-center justifi-content-center mt-5">
-                        <a class="btn  btn-block  btn-primary " data-toggle="modal" data-target="#modal-add-subscription">
+                    <div class="col-12 text-center justifi-content-center">
+                        <button class="btn  btn-block  btn-primary  " data-toggle="modal" data-target="#modal-add-subscription" {{ $membresiasActive->count() >0 ? 'disabled': ''}}>
                             <i class="fa-solid fa-plus"></i>
                             <span>Agregar suscripción</span>
-                        </a>
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -116,45 +102,36 @@
 
         </div>
         <div class="row  m-0">
-            <div class="col-12 p-0 p-md-2 text-center" id="profile-tour">
+            @if (isset($membresias) && $membresias->count() > 0)
+            <div class="col-12 p-0 p-md-2">
 
                 <div class="card">
+                    <div class="card-header">
+                        <div class="card-text">
+                            <h4 class="card-title">Suscripciones del usuario.</h4>
 
-
-
-                    <div class="table-responsive  p-md-4 " id="users-table">
-                        <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
-                            <thead>
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-primary">
                                 <tr>
-
-
                                     <th scope="col">{{ __('Name') }}
-
-
                                     </th>
                                     <th scope="col">{{ __('Precio') }}
-
                                     </th>
                                     <th scope="col">Fecha de Pago</th>
                                     <th scope="col">Confirmado por</th>
-
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Inicio</th>
                                     <th scope="col">Fin</th>
-
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 @foreach ($membresias as $user)
-
-
-
-
                                 <tr>
-
-
 
                                     <td>{{ $user->membresia->name }}</td>
 
@@ -206,8 +183,28 @@
                                         {{(new DateTime($user->fin))->format('d-M-Y')}}
                                     </td>
                                     <td class="text-center">
+                                        <div class="dropdown">
+                                            <a class="btn btn-sm btn-outline-primary btn-icon-only text-warning" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-ellipsis-v"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                @if($user->status_id==1)
+                                                <a class="dropdown-item" style="cursor:pointer" wire:click="updatePayment('{{ $user->id }}')">Confirmar pago</a>
+                                                
+                                             
+
+                                                @endif
+
+                                                <a class="dropdown-item" style="cursor:pointer" wire:click="ConfirmCancelOrder('{{ $user->id }}')">Cancelar</a>
+
+
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="{{ route('users.show',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">visibilitys</i></a>
+
                                             <a href="{{ route('users.edit',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
                                             <form method="post" action="{{ route('users.destroy', $user->id) }} ">
@@ -219,23 +216,21 @@
                                             </form>
                                         </div>
 
-                                    </td>
+                                    </td> -->
                                 </tr>
-
                                 @endforeach
                             </tbody>
                         </table>
-
                     </div>
-
                 </div>
 
-
-
-
-
-
             </div>
+
+            @else
+            <div class="col-12">
+                <p class="alert alert-warning text-dark">⚠️ ¡Ooooups! Este usuario no tiene ninguna suscripción activa.</p>
+            </div>
+            @endif
         </div>
     </div>
 </div>

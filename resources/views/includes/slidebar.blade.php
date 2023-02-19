@@ -77,6 +77,14 @@
                     <p>Membresias</p>
                 </a>
             </li>
+            
+
+            <li class="nav-item {{ $activePage == 'comments' ? 'active' : '' }}">
+                <a href="{{ route('comments.index') }}">
+                <i class="material-icons">forum</i>
+                    <p>Comentarios</p>
+                </a>
+            </li>
 
 
 

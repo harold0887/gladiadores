@@ -17,11 +17,15 @@ $(function () {
   showModalLoad();
   confirmDeleteUser();
   confirmDeleteMembership();
-  $('#datetimepicker').datetimepicker();
+  autoplay();
+
+  //$("#modal-spinner").modal("show");
+  //$("#datetimepicker").datetimepicker();
 });
+
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
-  $("#create-user-admin,#edit-user-admin,#create-membership-admin").submit(function (e) {
+  $("#create-user-admin,#edit-user-admin,#edit-user-profile,#create-membership-admin").submit(function (e) {
     $("#modal-spinner").modal("show");
   });
 }
@@ -90,16 +94,16 @@ Livewire.on("reload", function () {
   setTimeout("location.reload()", 2000);
 });
 Livewire.on("error", function ($message) {
-  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire("¡error!", $message["message"], "error");
+  swal("¡error!", $message["message"], "error");
 });
 Livewire.on("success", function ($message) {
-  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire("¡Buen trabajo!", $message["message"], "success");
+  swal("¡Buen trabajo!", $message["message"], "success");
 });
 Livewire.on("confirmarCancelacion", function ($message) {
   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
     title: "Cancelar la suscripción ?",
     text: $message["message"],
-    icon: "question",
+    type: "question",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
@@ -177,6 +181,43 @@ Livewire.on("confirmMembershipRegister", function ($data) {
 Livewire.on("activeDatePicker", function () {
   initDateTimePicker();
 });
+Livewire.on("confirmPayment", function ($data) {
+  sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
+    title: "Ingresa la cantidad recibida.",
+    input: "text",
+    showCancelButton: true,
+    confirmButtonText: "Confirmar pago",
+    cancelButtonText: "Cancelar",
+    inputValidator: function inputValidator(cantida) {
+      // Si el valor es válido, debes regresar undefined. Si no, una cadena
+      if (!cantida) {
+        return "Por favor ingresa la cantidad";
+      } else {
+        return undefined;
+      }
+    }
+  }).then(function (resultado) {
+    if (resultado.value) {
+      var cantida = resultado.value;
+      //alert(cantida+'.00');
+      Livewire.emit("setPayment", cantida, $data["id"]);
+    }
+  });
+});
+Livewire.on("ConfirmCancelOrder", function ($data) {
+  swal({
+    title: "¿Realmente quiere cancelar esta orden de pago ? ",
+    //type: "question",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Si, eliminar!"
+  }).then(function (result) {
+    if (result.value) {
+      Livewire.emit("cancelOrder", $data["id"]);
+    }
+  });
+});
 
 // function initDateTimePicker() {
 
@@ -196,6 +237,41 @@ Livewire.on("activeDatePicker", function () {
 //     });
 
 // }
+
+//slider
+function autoplay() {
+  $(".coments-autoplay").slick({
+    autoplay: true,
+    autoplaySpeed: 2300,
+    arrows: false,
+    infinite: true,
+    responsive: [{
+      breakpoint: 2048,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }]
+  });
+}
 
 /***/ }),
 

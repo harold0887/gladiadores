@@ -4,7 +4,7 @@
 'folderActive' => '',
 'elementActive' => '',
 'title'=>'Membresias',
-'navbarClass'=>'bg-dark',
+'navbarClass'=>'bg-dark py-3',
 'activePage'=>'membership',
 ])
 
@@ -12,7 +12,7 @@
 
 <div class="content">
     <div class="container p-0">
-        <div class="row ">
+        <div class="row justify-content-center">
 
             @if(isset($memberships) && $memberships->count() > 0)
 

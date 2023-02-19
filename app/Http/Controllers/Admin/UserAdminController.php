@@ -33,11 +33,7 @@ class UserAdminController extends Controller
      */
     public function create()
     {
-        $roles = DB::table('roles')
-            ->whereNotIn('name', ['propietario', 'super-admin'])->get();
-
-
-        return view('admin.users.create', compact('roles'));
+        return view('admin.users.create');
     }
 
     /**
@@ -67,6 +63,7 @@ class UserAdminController extends Controller
                 'picture' => $request->photo ? $request->photo->store('profile', 'public') : null,
                 'password' => Hash::make($randString),
                 'created_by' => auth()->user()->name,
+                'renovacion'=>1
 
             ]);
 

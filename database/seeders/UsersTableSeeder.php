@@ -57,15 +57,67 @@ class UsersTableSeeder extends Seeder
         ]);
 
 
+        $usuario4 = User::create([
+            'name' => 'Eduardo Del Prado',
+            'nickname'=>'Edu',
+            'email' => 'edu@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'phone'=>'5574854547',
+            'created_by'=>'System',
+            'renovacion'=>1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $usuario5 = User::create([
+            'name' => 'Johana Collazos',
+            'nickname'=>'Johana',
+            'email' => 'Johana@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'phone'=>'5574853547',
+            'created_by'=>'System',
+            'renovacion'=>1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $usuario6 = User::create([
+            'name' => 'Rocío Salazar Medrano',
+            'nickname'=>'Rocío',
+            'email' => 'Rocío@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'phone'=>'5574852547',
+            'created_by'=>'System',
+            'renovacion'=>1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+
+
+
+
 
 
 
         $admin->assignRole('administrador');
         $admin->assignRole('usuario');
         $usuario->assignRole('usuario');
+        $usuario4->assignRole('usuario');
+        $usuario5->assignRole('usuario');
+        $usuario6->assignRole('usuario');
 
 
-        for ($i=11; $i <99 ; $i++) { 
+
+
+
+
+
+
+
+
+        for ($i=11; $i <20 ; $i++) { 
             $new = User::create([
                 'name' => 'Usuario '.$i,
                 'nickname'=>'user '.$i,

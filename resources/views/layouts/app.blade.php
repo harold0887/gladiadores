@@ -20,11 +20,19 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 
 
+  <!-- boostrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/paper-dashboard.css') }}" rel="stylesheet">
     <!-- CSS Just for demo purpose, don't include it in your project -->
+
+
+     <!-- CSS slick -->
+     <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('slick/slick-theme.css') }}">
 
 
     <link href="{{ asset('demo/demo.css') }}" rel="stylesheet">
@@ -37,7 +45,7 @@
     <livewire:add-admin-render />
     <livewire:add-subscription-render />
 
-    @if (Route::is('dashboard','dashboard.*','users.*','administradores.*','membresias.*'))
+    @if (Route::is('dashboard','dashboard.*','users.*','administradores.*','membresias.*','comments.index'))
     @include('layouts.page_templates.admin')
 
     @elseif(Route::is('login','register','password.email','password.request','password.reset'))
@@ -58,7 +66,7 @@
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('/js/plugins/bootstrap-switch.js') }}"></script>
     <!--  Plugin for Sweet Alert -->
-    <script src="{{ asset('/js/plugins/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('/js/plugins/sweetalert2.js') }}"></script>
     <!-- Forms Validations Plugin -->
     <script src="{{ asset('/js/plugins/jquery.validate.min.js') }}"></script>
     <!--  Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
@@ -109,13 +117,18 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
+
+      <!-- slick -->
+    <script src="{{ asset('slick/slick.js') }}" type="text/javascript" charset="utf-8"></script>
     
  
-    @stack('scripts')
+  
 
 
     @include('includes.fixed-plugin-js')
     @livewireScripts
+    @stack('scripts')
+
 </body>
 
 </html>

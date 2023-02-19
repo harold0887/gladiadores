@@ -31,36 +31,58 @@ class AddSubscription extends Command
      */
     public function handle()
     {
+
         $users = User::all();
 
         foreach ($users as $user) {
 
-            if ($user->orders->count() > 0) {
-                foreach ($user->orders as $order) {
-                    if ($order->status_id == 2 && Carbon::create($order->fin)->subDay()) {
-
-                        $order = Order::findOrFail($order->id);
-                        $membresia = Membresia::findOrFail($order->membresia_id);
+            //ordenes activas de cada usuario en forma descendente
+            $user_subscriptions = $user->orders()->orderBy('created_at', 'desc')->where('status_id', 2)->get();
 
 
-                        $date = Carbon::create(now());
-                        $end = Carbon::create(now());
 
-                        switch ($membresia->frecuencia->id) {
-                            case '1':
-                                $end->addYear()->subDay();
-                                break;
-                            case '2':
-                                $end->addMonth(6)->subDay();
-                                break;
-                            case '3':
-                                $end->addMonth(3)->subDay();
-                                break;
-                            case '4':
-                                $end->addMonth()->subDay();
-                                break;
-                        }
 
+            //recorrer las ordenes
+            foreach ($user_subscriptions as $order) {
+
+
+                $order = Order::findOrFail($order->id);
+                $membresia = Membresia::findOrFail($order->membresia_id);
+                $user = User::findOrFail($order->user_id);
+
+                $date = Carbon::create(now());
+                $end = Carbon::create(now());
+
+                switch ($membresia->frecuencia->id) {
+                    case '1':
+                        $end->addYear()->subDay();
+                        break;
+                    case '2':
+                        $end->addMonth(6)->subDay();
+                        break;
+                    case '3':
+                        $end->addMonth(3)->subDay();
+                        break;
+                    case '4':
+                        $end->addMonth()->subDay();
+                        break;
+                }
+
+
+
+                //si vencio ayer se actualiza y se crea nueva suscripción
+                if (date_format(Carbon::create($order->fin)->addDays(), "Y-m-d") == date_format(now(), "Y-m-d")) {
+
+
+                    // anualidades no se renuevan en automatico
+                    if ($order->membresia_id == 1) {
+                        $order->update([
+                            'status_id' => 4,
+
+                        ]);
+
+                        //suscipciones se renuevan en automatico
+                    } else {
                         $order->update([
                             'status_id' => 4,
 
@@ -76,7 +98,8 @@ class AddSubscription extends Command
                             'inicio' => $date,
                             'fin' => $end,
                         ]);
-                        //enviar email despues
+
+                        //enviar mensaje
                     }
                 }
             }

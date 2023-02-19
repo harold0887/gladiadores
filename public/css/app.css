@@ -313,43 +313,12 @@ body{
 }
   
 
-  .swal2-icon {
-  position: relative;
-  box-sizing: content-box;
-  justify-content: center;
-  width: 5em;
-  height: 5em;
-  margin: 2.5em auto 0.6em;
-  border: 0.25em solid rgba(0,0,0,0);
-  border-radius: 50%;
-  border-color: #000;
-  font-family: inherit;
-  line-height: 5em;
-  cursor: default;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-  
+  .logo{
+  color: #51cbce; 
+  position:absolute; 
+  top:2px;
 
-  .swal2-icon.swal2-info{
-
-  width: 80px !important;
-  height: 80px !important;
-}
-  
-
-  .swal2-icon .swal2-icon-content {
-  display: flex;
-  align-items: center;
-  font-size: 3.75em;
-
-
-}
-  
-
-  .swal2-icon.swal2-info.swal2-icon-show .swal2-icon-content {
-  animation: swal2-animate-i-mark .8s;
+  width:75px;
 }
   
 
@@ -374,10 +343,13 @@ body{
     display: none;
   }
 
-}
+  .logo{
+
+    width:58px;
+    left:45%
+  }
   
 
-  .fixed-plugin {
- 
-  top: 62px;
 }
+
+

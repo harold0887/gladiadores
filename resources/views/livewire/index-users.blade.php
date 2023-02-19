@@ -4,7 +4,7 @@
             <div class="col-12 border-bottom ">
                 <h4 class="m-0  text-center">{{ __('Users') }}</h4>
             </div>
-
+               
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
@@ -41,12 +41,6 @@
             @if (isset($users) && $users->count() > 0)
             <div class="col ">
                 <div class="card">
-
-
-                    <div class="col-12 ">
-                        @include('alerts.success')
-                        @include('alerts.errors')
-                    </div>
 
                     <div class="table-responsive  p-md-4 " id="users-table">
                         <table id="datatable" class="table table-striped table-bordered " cellspacing="0" width="100%">
@@ -90,7 +84,7 @@
                                         @endif
                                     </th>
                                     <th scope="col">{{ __('Phone') }}</th>
-                                    
+
 
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Acciones</th>
@@ -108,11 +102,11 @@
 
                                 @foreach($user->orders as $v)
 
-                                @if($v->status_id ==1)
+                                @if($v->status_id ==1 )
                                 @php
                                 $vcountpending++;
                                 @endphp
-                                @elseif($v->status_id ==2)
+                                @elseif($v->status_id ==2 && $v->membresia_id != 1)
                                 @php
                                 $vcountSuccess++;
                                 @endphp
@@ -146,22 +140,22 @@
                                     <td>
                                         {{ $user->phone }}
                                     </td>
-                                  
+
                                     <td>
                                         {{ $user->created_by }}
                                     </td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a href="{{ route('users.show',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">visibilitys</i></a>
-                                            <a href="{{ route('users.edit',$user->id) }}" class="btn btn-info btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
+                                            <a href="{{ route('users.edit',$user->id) }}" class="btn btn-success btn-link btn-icon btn-sm edit "><i class="material-icons">edit</i></a>
 
-                                            <form method="post" action="{{ route('users.destroy', $user->id) }} ">
+                                            <!-- <form method="post" action="{{ route('users.destroy', $user->id) }} ">
                                                 <button class=" btn btn-danger btn-link btn-icon btn-sm remove show-alert-delete-user">
                                                     @csrf
                                                     @method('DELETE')
                                                     <i class="material-icons ">close</i>
                                                 </button>
-                                            </form>
+                                            </form> -->
                                         </div>
 
                                     </td>
@@ -170,10 +164,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        <div class="col-12 d-flex justify-content-center">
+                            {{ $users->links() }}
+                        </div>
                     </div>
-
                 </div>
+
             </div>
             @else
             <div class="col-12">

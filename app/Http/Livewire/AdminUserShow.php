@@ -8,31 +8,34 @@ use App\Order;
 use App\Membresia;
 use Carbon\Carbon;
 use Livewire\Component;
+use Illuminate\Support\Arr;
 
 class AdminUserShow extends Component
 {
-    public $user, $search, $prueba;
+    public $user, $search;
     protected $listeners = [
         'addSubscription' => 'addSubscription',
-        'CancelarSuscripcion', 'CancelarSuscripcion'
+        'CancelarSuscripcion', 'CancelarSuscripcion',
+        'setPayment', 'cancelOrder'
     ];
 
 
     public function mount($id)
     {
         $this->user = User::findOrFail($id);
-
-
-       
     }
     public function render()
     {
 
 
 
-        $membresias =  $this->user->orders()->orderBy('fin', 'desc')->get();
-        $membresiasActive =  $this->user->orders->where('status_id', 2);
+        $membresias =  $this->user->orders()->orderBy('created_at', 'desc')->get();
+        $membresiasActive =  $this->user->orders
+            ->whereNotIn('membresia_id', [1])
+            ->where('status_id', 2);
         $lastMembership = $this->user->orders()
+            ->whereNotIn('membresia_id', [1])
+            ->whereNotIn('status_id', [3])
             ->orderBy('fin', 'desc')
             ->limit(1)
             ->first();
@@ -61,6 +64,14 @@ class AdminUserShow extends Component
         $membresia = Membresia::findOrFail($id);
 
 
+
+        $active = Order::where('user_id', $this->user->id)->get();
+
+
+
+
+
+
         $date = new Carbon($start);
         $end = new Carbon($start);
 
@@ -78,8 +89,6 @@ class AdminUserShow extends Component
                 $end->addMonth()->subDay();
                 break;
         }
-
-
 
         try {
             Order::create([
@@ -136,6 +145,82 @@ class AdminUserShow extends Component
         } catch (\Throwable $e) {
             $this->emit('error', [
                 'message' => 'Error al actualizar el la renovación- ' . $e->getMessage()
+            ]);
+        }
+    }
+
+
+    public function updatePayment($id)
+    {
+
+
+        $this->emit('confirmPayment', [
+            'id' => $id
+        ]);
+    }
+
+    public function setPayment($cantidad, $id)
+    {
+
+        $order = Order::findOrFail($id);
+
+
+
+
+        if (is_numeric($cantidad)) {
+
+            if ($cantidad != $order->amount) {
+
+                $this->emit('error', [
+                    'message' => 'La cantidad ingresada no coincide con el precio de la suscripción.'
+                ]);
+            } else {
+                try {
+                    $order->update([
+                        'confirmed_by' => auth()->user()->name,
+                        'date_payment' => now(),
+                        'status_id' => 2,
+                    ]);
+                    $this->emit('success-auto-close', [
+                        'message' => "El pago se confirmo con éxito.",
+                    ]);
+                } catch (\Throwable $e) {
+                    $this->emit('error', [
+                        'message' => 'Error al actualizar el pago - ' . $e->getMessage()
+                    ]);
+                }
+            }
+        } else {
+            $this->emit('error', [
+                'message' => 'Solo puede ingresar números.'
+            ]);
+        }
+    }
+
+    public function ConfirmCancelOrder($id)
+    {
+        $this->emit('ConfirmCancelOrder', [
+            'id' => $id
+        ]);
+    }
+
+    public function cancelOrder($id)
+    {
+
+        $order = Order::findOrFail($id);
+
+        try {
+            $order->update([
+
+                'status_id' => 3,
+            ]);
+            $this->emit('success-auto-close', [
+                'message' => "La orden se actualizo con éxito.",
+            ]);
+            $this->emit('reload');
+        } catch (\Throwable $e) {
+            $this->emit('error', [
+                'message' => 'Error al cancelar la orden - ' . $e->getMessage()
             ]);
         }
     }

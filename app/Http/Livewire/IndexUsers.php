@@ -4,7 +4,10 @@ namespace App\Http\Livewire;
 
 use App\User;
 use App\Order;
+use App\Membresia;
+use Carbon\Carbon;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
 class IndexUsers extends Component
@@ -12,7 +15,8 @@ class IndexUsers extends Component
     public $search = '';
     public $sortDirection = 'asc';
     public $sortField = 'id';
-
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public function render()
     {
@@ -22,14 +26,16 @@ class IndexUsers extends Component
                 ->orWhere('phone', 'like', '%' . $this->search . '%')
                 ->orWhere('nickname', 'like', '%' . $this->search . '%');
         })
-            //->whereNotIn('email', ['harold0887@hotmail.com'])
+            ->whereNotIn('email', ['harold0887@hotmail.com'])
             ->orderBy($this->sortField, $this->sortDirection)
-            ->get();
-     
+            ->paginate(50);
 
-    
-        
         return view('livewire.index-users', compact('users'));
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
 
@@ -49,4 +55,7 @@ class IndexUsers extends Component
     {
         $this->search = "";
     }
+
+
+ 
 }

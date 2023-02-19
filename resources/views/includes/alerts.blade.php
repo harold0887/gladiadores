@@ -1,30 +1,27 @@
 @push('scripts')
 @if(session('success'))
 <script>
-    $(function() {
-        Swal.fire({
-            icon: 'success'
-            , title: "¡Buen trabajo!"
-            , text: '{{session('success')}}'
-            , showConfirmButton: true
-        , }).catch(swal.noop);
-    })
+    swal("¡Buen trabajo!", "{{session('success')}}", "success");
+</script>
+@endif
 
+
+@if(session('success-auto-close'))
+<script>
+    swal({
+        title: "¡Buen trabajo!",
+        text: "{{session('success-auto-close')}}",
+        type: "success",
+        timer: 2000,
+        button: false,
+    });
 </script>
 @endif
 
 
 @if (session('error'))
 <script>
-    $(function() {
-        Swal.fire({
-            icon: 'error'
-            , title: "¡Error!"
-            , text: '{{session('error')}}'
-            , showConfirmButton: true
-        , }).catch(swal.noop);
-    })
-
+    swal("¡error!", "{{session('error')}}", "error");
 </script>
 @endif
 

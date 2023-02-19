@@ -21,7 +21,7 @@ return new class extends Migration
                 $table->timestamp('date_payment')->nullable();
                 $table->string('confirmed_by')->nullable();
                 $table->string('created_by');
-                $table->foreignId('user_id')->constrained();
+                $table->foreignId('user_id')->constrained()->restrictOnDelete();
                 $table->foreignId('status_id')->constrained('status');
                 $table->date('inicio');
                 $table->date('fin');

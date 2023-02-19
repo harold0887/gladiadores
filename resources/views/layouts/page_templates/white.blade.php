@@ -9,11 +9,11 @@
 
 
 
-<div class="wrapper">
+<div class="wrapper" >
 
 
 
-    <div class="main-panel1">
+    <div class="main-panel1" >
         
         @include('includes.navbar')
         @yield('content')

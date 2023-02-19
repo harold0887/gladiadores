@@ -7,6 +7,6 @@
         
         @include('includes.navbar-admin')
         @yield('content')
-        @include('includes.footer')
+        <!-- @include('includes.footer') -->
     </div>
 </div>

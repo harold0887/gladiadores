@@ -24,8 +24,11 @@
         <div class="col-md-12 mt-5">
 
             <a href="{{ route('home') }}" class="text-white btn btn-outline-primary btn-lg">
-                <i class="material-icons  mr-2">home</i>
-                <span>Volver al inicio</span>
+                <div class="d-flex align-items-center">
+                    <i class="material-icons  mr-2">home</i>
+                    <span>Volver al inicio</span>
+                </div>
+
             </a>
 
         </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\AdminUserShow;
+use App\Http\Livewire\IndexComments;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
@@ -22,6 +23,7 @@ Route::get('/foo', function () {
 
 
 Route::get('membresias', [HomeController::class, 'membresias'])->name('memberships');
+Route::get('contacto', [HomeController::class, 'contacto'])->name('contacto');
 
 Route::group(['middleware' => ['auth']], function () {
 
@@ -40,10 +42,11 @@ Route::group(['middleware' => ['role:administrador']], function () {
 
 	Route::resource('dashboard/users', UserController::class)->except(['show']);
 	Route::resource('dashboard/membresias', MembershipController::class)->except(['show']);
-	
+	Route::get('dashboard/comments', IndexComments::class)->name('comments.index');
+
 	Route::get('dashboard/administradores', [IndexAdministrators::class, '__invoke'])->name('administradores.index');
 
-	Route::resource('dashboard/users', UserAdminController::class)->except(['delete','show']);
+	Route::resource('dashboard/users', UserAdminController::class)->except(['delete', 'show']);
 
 	Route::get('dashboard/users/{id}', [\App\Http\Livewire\AdminUserShow::class, '__invoke'])->name('users.show');
 });

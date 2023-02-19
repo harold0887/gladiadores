@@ -40,6 +40,9 @@
     <script src="{{ asset('js/core/jquery.min.js') }}"></script>
     <script src="{{ asset('/demo/demo.js') }}"></script>
 
+    <!-- iconos awesome -->
+    <script src="https://kit.fontawesome.com/58c5330fd0.js" crossorigin="anonymous"></script>
+
     @stack('scripts')
 
 </body>

@@ -13,9 +13,16 @@ class Order extends Model
     protected $guarded=[];
 
 
+    //relacion con una membresia
     public function Membresia()
     {
         return $this->belongsTo(Membresia::class);
+    }
+
+    //relacion con un usuario
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
 

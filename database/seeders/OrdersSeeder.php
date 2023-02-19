@@ -15,8 +15,6 @@ class OrdersSeeder extends Seeder
      */
     public function run()
     {
-
-
-    
+      
     }
 }

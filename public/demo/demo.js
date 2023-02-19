@@ -198,7 +198,12 @@ demo = {
     });
   },
 
-  showSwal: function(type) {
+  showSwal: function(type,message) {
+
+
+
+
+
     if (type == 'basic') {
       swal({
         title: "Here's a message!",
@@ -206,7 +211,23 @@ demo = {
         confirmButtonClass: "btn btn-success"
       }).catch(swal.noop);
 
-    } else if (type == 'title-and-text') {
+    }else if (type == 'error') {
+      swal({
+        title: "Error!",
+        text: message,
+        type: 'error',
+        buttonsStyling: false,
+        confirmButtonClass: "btn btn-info"
+      }).catch(swal.noop);
+
+    }
+    
+    
+    
+    
+    
+    
+    else if (type == 'title-and-text') {
       swal({
         title: "Here's a message!",
         text: "It's pretty, isn't it?",
