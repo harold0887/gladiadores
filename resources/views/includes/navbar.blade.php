@@ -74,6 +74,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="background:#e9e9e8;">
 
                         <a class="dropdown-item" href="{{route('profile.edit')}}">{{ __('My Profile') }}</a>
+                        <a class="dropdown-item" href="{{route('profile.subscriptions')}}">Mis Suscripciones</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a class="dropdown-item" href="route('logout')" onclick="event.preventDefault();

@@ -17,7 +17,7 @@ class IndexComments extends Component
     public function render()
     {
         $comments = Comment::leftJoin('users', 'users.id', '=', 'comments.user_id')
-            ->select('comments.*', 'users.email as userEmail', 'users.name')
+            ->select('comments.*', 'users.email as userEmail', 'users.name','users.picture')
             ->where(function ($query) {
                 $query->where('users.name', 'like', '%' . $this->search . '%')
                     ->orWhere('comments.comment', 'like', '%' . $this->search . '%');

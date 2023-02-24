@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-'class' => 'login-page',
+    'class' => 'register-page',
 'backgroundImagePath' => 'img/bg/the-how-photographer.jpg',
 'title'=>'Password reset',
 'navbarClass'=>'navbar-transparent',
@@ -8,7 +8,7 @@
 
 @section('content')
 <div class="content">
-    <div class="container">
+    <div class="container mt-5" style="padding-bottom: 90px;">
         <div class="col-lg-5 col-md-6 ml-auto mr-auto">
             <div class="card card-login">
                 <div class="card-body ">

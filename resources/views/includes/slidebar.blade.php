@@ -2,16 +2,16 @@
     <!--
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-    <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+    <!-- <div class="logo">
+        <a href="{{route('home')}}" class="simple-text">
             <div class="logo-image-small">
-                <img src="{{ asset('img/logo-small.png') }}">
+                <img src="{{ asset('img/evernote.png') }}">
             </div>
         </a>
         <a href="{{route('home')}}" class="simple-text logo-normal">
-            Name APP
+            home
         </a>
-    </div>
+    </div> -->
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">

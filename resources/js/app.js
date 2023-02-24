@@ -5,18 +5,19 @@ $(function () {
   confirmDeleteUser();
   confirmDeleteMembership();
   autoplay();
- 
-  //$("#modal-spinner").modal("show");
+  mostrarComentarios();
+
+  //$("#payment-info").modal("show");
   //$("#datetimepicker").datetimepicker();
 });
 
 function showModalLoad() {
   //activar modal al enviar, se cierra al retornar controlador
-  $("#create-user-admin,#edit-user-admin,#edit-user-profile,#create-membership-admin").submit(
-    function (e) {
-      $("#modal-spinner").modal("show");
-    }
-  );
+  $(
+    "#create-user-admin,#edit-user-admin,#edit-user-profile,#create-membership-admin"
+  ).submit(function (e) {
+    $("#modal-spinner").modal("show");
+  });
 }
 
 function confirmDeleteUser() {
@@ -241,6 +242,13 @@ Livewire.on("ConfirmCancelOrder", function ($data) {
   });
 });
 
+
+Livewire.on("confirm-user-add-membreship", function () {
+  $("#payment-info").modal("show");
+});
+
+
+
 // function initDateTimePicker() {
 
 //     $("#dateMembership").datetimepicker({
@@ -298,5 +306,13 @@ function autoplay() {
         },
       },
     ],
+  });
+}
+
+function mostrarComentarios() {
+  $("#comments-show").click(function () {
+    $("#comments-all").toggle();
+    $("#comments-slick").toggle();
+    autoplay();
   });
 }

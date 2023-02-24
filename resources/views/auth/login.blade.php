@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-'class' => 'login-page',
+'class' => 'register-page',
 'backgroundImagePath' => 'img/bg/box7.jpg',
 'folderActive' => '',
 'elementActive' => '',
@@ -8,6 +8,9 @@
 'activePage'=>'login',
 
 ])
+
+
+
 
 @section('content')
 
@@ -21,8 +24,8 @@
     </div>
     @endif
 
-    <div class="container" style="padding-bottom: 150px;">
-        <div class="col-lg-4 col-md-6 ml-auto mr-auto pb-5 pb-md-0 mb-5 mb-md-0">
+    <div class="container mt-5" style="padding-bottom: 90px;">
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto ">
             <form class="form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="card card-login">

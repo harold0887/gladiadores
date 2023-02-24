@@ -21,7 +21,7 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        
+
 
         return view('admin.users.index');
     }
@@ -47,7 +47,7 @@ class UserAdminController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'nickname' => ['required', 'string', 'max:255','unique:users,nickname'],
+            'nickname' => ['required', 'string', 'max:255', 'unique:users,nickname'],
             'phone' => 'required|regex:/^[0-9]{10}$/|unique:users,phone',
             //'rol_id' => 'required|regex:/^[1-2]{1}$/'
         ]);
@@ -63,7 +63,7 @@ class UserAdminController extends Controller
                 'picture' => $request->photo ? $request->photo->store('profile', 'public') : null,
                 'password' => Hash::make($randString),
                 'created_by' => auth()->user()->name,
-                'renovacion'=>1
+                'renovacion' => 1
 
             ]);
 
@@ -77,7 +77,7 @@ class UserAdminController extends Controller
         }
     }
 
- 
+
 
 
     /**

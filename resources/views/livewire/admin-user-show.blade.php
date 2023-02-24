@@ -1,7 +1,7 @@
 <div class="content p-0">
     <div class="container-fluid mt--6  ">
         <div class="row m-0">
-          
+
 
             <div class="col-12 col-md-9">
                 <div class="card card-user">
@@ -90,7 +90,7 @@
 
 
                     <div class="col-12 text-center justifi-content-center">
-                        <button class="btn  btn-block  btn-primary  " data-toggle="modal" data-target="#modal-add-subscription" {{ $membresiasActive->count() >0 ? 'disabled': ''}}>
+                        <button class="btn  btn-block  btn-primary  " data-toggle="modal" data-target="#modal-add-subscription">
                             <i class="fa-solid fa-plus"></i>
                             <span>Agregar suscripción</span>
                         </button>
@@ -120,8 +120,8 @@
                                     </th>
                                     <th scope="col">{{ __('Precio') }}
                                     </th>
-                                    <th scope="col">Fecha de Pago</th>
-                                    <th scope="col">Confirmado por</th>
+                                    <th scope="col">Pago</th>
+                                    <th scope="col">Confirmado</th>
                                     <th scope="col">{{ __('Create by') }}</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Inicio</th>
@@ -190,8 +190,8 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                                                 @if($user->status_id==1)
                                                 <a class="dropdown-item" style="cursor:pointer" wire:click="updatePayment('{{ $user->id }}')">Confirmar pago</a>
-                                                
-                                             
+
+
 
                                                 @endif
 

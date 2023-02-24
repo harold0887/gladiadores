@@ -94,11 +94,15 @@
                 </p>
                 <p style="color:#4d4d4d">
                     Mira lo que lo que piensan los suscriptores de nuestros entrenamientos.
+
+                </p>
+                <p>
+                    <small id="comments-show" class="text-primary" style="cursor:pointer">Ver todos los comentarios o dejar un comentario.</small>
                 </p>
             </div>
         </div>
     </div>
-    <div class="coments-autoplay border m-0">
+    <div id="comments-slick" class="coments-autoplay m-0" style="display: show">
         @if (isset($comments) && $comments->count() > 0)
         @foreach ($comments as $comment)
         <div class="px-2">
@@ -107,16 +111,32 @@
                     <div class="icon icon-primary">
                         <i class="fa fa-quote-right"></i>
                     </div>
-                    <p class="card-description">
-                        {{$comment->comment}}
+                    <p class="card-description " style="height: 120px;">
+
+
+                        {{Str::limit($comment->comment,200)}}
                     </p>
                 </div>
                 <div class="card-footer ">
-                    <h4 class="card-title text-primary">{{$comment->user->name}}</h4>
+                    <h4 class="card-title text-primary">
+
+                        @php
+                        $name = explode(" ", $comment->user->name);
+                        echo $name[0];
+                        @endphp
+
+
+                    </h4>
                     <h6 class="card-category">@ {{$comment->user->nickname}}</h6>
                     <div class="card-avatar d-flex justify-content-center">
 
-                        <img class="img" src="{{ asset('img/faces/joe-gardner-2.jpg') }}">
+                        @if(isset($comment->user->picture))
+                        <img class="img" src="{{Storage::url($comment->user->picture)}}">
+                        @else
+                        <img class="img" src="{{ asset('img/No Profile Picture.png') }}" alt="...">
+                        @endif
+
+
 
                     </div>
                 </div>
@@ -125,9 +145,9 @@
 
         @endforeach
         @endif
-
-
-
+    </div>
+    <div id="comments-all" style="display: none">
+        <livewire:comments-render />
     </div>
 
 
@@ -138,15 +158,3 @@
 
 
 @endsection
-@push('scripts')
-<script>
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-        demo.initVectorMap();
-    });
-</script>
-
-
-
-@endpush

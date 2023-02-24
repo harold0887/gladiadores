@@ -18,8 +18,9 @@ $(function () {
   confirmDeleteUser();
   confirmDeleteMembership();
   autoplay();
+  mostrarComentarios();
 
-  //$("#modal-spinner").modal("show");
+  //$("#payment-info").modal("show");
   //$("#datetimepicker").datetimepicker();
 });
 
@@ -218,6 +219,9 @@ Livewire.on("ConfirmCancelOrder", function ($data) {
     }
   });
 });
+Livewire.on("confirm-user-add-membreship", function () {
+  $("#payment-info").modal("show");
+});
 
 // function initDateTimePicker() {
 
@@ -270,6 +274,13 @@ function autoplay() {
         slidesToScroll: 1
       }
     }]
+  });
+}
+function mostrarComentarios() {
+  $("#comments-show").click(function () {
+    $("#comments-all").toggle();
+    $("#comments-slick").toggle();
+    autoplay();
   });
 }
 

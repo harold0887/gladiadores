@@ -1,20 +1,20 @@
-<footer class="footer footer-black footer-white text-primary {{$navbarClass}}" style="padding:0px !important">
+<footer class="footer footer-black footer-white text-white {{$navbarClass}}" style="padding:0px !important">
     <div class="container ">
         <div class="row " >
             <div class="col-12 col-lg-5 ">
                 <nav class="footer-nav">
                     <ul>
                         <li class="d-block my-2">
-                            <i class="fa-solid fa-location-dot mr-2 ml-m-4"></i> C. 61 N. 6, 77514 Cancún, Q.R.
+                            <i class="fa-solid fa-location-dot mr-2 ml-m-4 text-primary"></i> C. 61 N. 6, 77514 Cancún, Q.R.
                         </li>
                         <li class="d-block my-2">
-                            <i class="fa-solid fa-phone mr-2 ml-m-4"></i>(998) 110 1112
+                            <i class="fa-solid fa-phone mr-2 ml-m-4  text-primary"></i>(998) 110 1112
                         </li>
                         <li class="d-block my-2">
-                            <i class="fa-solid fa-envelope  mr-2 ml-m-4"></i>contacto@labestia.com
+                            <i class="fa-solid fa-envelope  mr-2 ml-m-4 text-primary"></i>contacto@labestia.com
                         </li>
                         <li class="d-block my-2">
-                            <i class="fa-solid fa-clock mr-2 ml-m-4"></i></i>Lun - Vie 6 a 12 am | 4 a 8 pm y Sáb 9 a 12 am
+                            <i class="fa-solid fa-clock mr-2 ml-m-4 text-primary"></i></i>Lun - Vie 6 a 12 am | 4 a 8 pm y Sáb 9 a 12 am
                         </li>
 
                     </ul>

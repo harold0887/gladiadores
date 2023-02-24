@@ -92,7 +92,14 @@
                             <tbody>
                                 @foreach($comments as $comment)
                                 <tr>
-                                    <td>{{ $comment->name }} </td>
+                                    <td class="d-flex align-items-center">
+                                        @if(isset($comment->picture))
+                                        <img class="avatar border-gray" src="{{ Storage::url($comment->picture) }}" alt="...">
+                                        @else
+                                        <img class="avatar border-gray" src="{{ asset('img/No Profile Picture.png') }}" alt="...">
+                                        @endif
+                                        <p class="ml-2">{{ $comment->name }}</p>
+                                    </td>
                                     <td class="togglebutton" wire:click="changeStatusComments({{ $comment->id }}, '{{ $comment->status }}')">
                                         <label>
                                             <input type="checkbox" {{ $comment->status == 1 ? 'checked ' : '' }} name="status">
@@ -106,7 +113,7 @@
                                             <span class="toggle"></span>
                                         </label>
                                     </td>
-                                    <td>{{ $comment->comment }} </td>
+                                    <td class="w-50">{{ $comment->comment }} </td>
 
                                 </tr>
                                 @endforeach

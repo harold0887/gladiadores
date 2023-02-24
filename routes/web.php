@@ -11,8 +11,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\MembershipController;
 use App\Http\Controllers\Admin\ProfileAdminController;
+use App\Http\Livewire\HomeRender;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+
+
+
 
 
 Auth::routes();
@@ -21,15 +26,23 @@ Route::get('/foo', function () {
 	Artisan::call('storage:link');
 });
 
-
-Route::get('membresias', [HomeController::class, 'membresias'])->name('memberships');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+//Route::get('membresias', [HomeController::class, 'membresias'])->name('memberships');
 Route::get('contacto', [HomeController::class, 'contacto'])->name('contacto');
+
+Route::get('membresias', [\App\Http\Livewire\MembresiasRender::class, '__invoke'])->name('memberships');
+
 
 Route::group(['middleware' => ['auth']], function () {
 
 	Route::get('profile', [ProfileController::class, 'profile'])->name('profile.edit');
+	Route::get('subscriptions', [ProfileController::class, 'subscriptions'])->name('profile.subscriptions');
 	Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 	Route::put('password', [ProfileController::class, 'password'])->name('profile.password');
+
+	Route::post('addSubscriptions', [ProfileController::class, 'adSubscriptions'])->name('add.subscriptions');
+
+	
 });
 
 

@@ -15,7 +15,7 @@
     </div>
     @endif
 
-    <div class="container mt-5" style="padding-bottom: 150px;">
+    <div class="container mt-5" style="padding-bottom: 90px;">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
             <div class="card card-signup text-center">
                 <div class="card-header ">
@@ -108,6 +108,5 @@
     $(document).ready(function() {
         demo.checkFullPageBackgroundImage();
     });
-
 </script>
 @endpush

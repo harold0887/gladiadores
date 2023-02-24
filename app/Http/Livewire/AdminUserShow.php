@@ -65,58 +65,65 @@ class AdminUserShow extends Component
 
 
 
-        $active = Order::where('user_id', $this->user->id)->get();
+        $active = Order::where('user_id', $this->user->id)
+            ->where('status_id', 2)
+            ->whereNotIn('membresia_id', [1])
+            ->count();
 
 
 
-
-
-
-        $date = new Carbon($start);
-        $end = new Carbon($start);
-
-        switch ($membresia->frecuencia->id) {
-            case '1':
-                $end->addYear()->subDay();
-                break;
-            case '2':
-                $end->addMonth(6)->subDay();
-                break;
-            case '3':
-                $end->addMonth(3)->subDay();
-                break;
-            case '4':
-                $end->addMonth()->subDay();
-                break;
-        }
-
-        try {
-            Order::create([
-                'membresia_id' => $membresia->id,
-                'amount' => $membresia->price_with_discount,
-                'description' => 'Membresia  creada por' . auth()->user()->name,
-                'created_by' => auth()->user()->name,
-                'user_id' => $this->user->id,
-                'status_id' => 1,
-                'inicio' => $date,
-                'fin' => $end,
-            ]);
-
-            $this->user->update([
-                'renovacion' => 1,
-
-            ]);
-
-            $this->emit('success', [
-                'message' => "Registro exitoso",
-            ]);
-
-            $this->emit('reload');
-        } catch (\Throwable $th) {
-
+        if ($active >= 1) {
             $this->emit('error', [
-                'message' => 'Error al guardar el registro - ' . $th->getMessage(),
+                'message' => 'No puede agregar más suscripciones, antes debe cancelar la suscripción actual.',
             ]);
+        } else {
+
+            $date = new Carbon($start);
+            $end = new Carbon($start);
+
+            switch ($membresia->frecuencia->id) {
+                case '1':
+                    $end->addYear()->subDay();
+                    break;
+                case '2':
+                    $end->addMonth(6)->subDay();
+                    break;
+                case '3':
+                    $end->addMonth(3)->subDay();
+                    break;
+                case '4':
+                    $end->addMonth()->subDay();
+                    break;
+            }
+
+            try {
+                Order::create([
+                    'membresia_id' => $membresia->id,
+                    'amount' => $membresia->price_with_discount,
+                    'description' => 'Membresia  creada por' . auth()->user()->name,
+                    'created_by' => auth()->user()->name,
+                    'user_id' => $this->user->id,
+                    'status_id' => 1,
+                    'inicio' => $date,
+                    'fin' => $end,
+                ]);
+
+                $this->user->update([
+                    'renovacion' => 1,
+
+                ]);
+
+                $this->emit('success', [
+                    'message' => "Registro exitoso",
+                ]);
+
+                $this->emit('reload');
+            } catch (\Throwable $th) {
+
+                $this->emit('error', [
+                    'message' => 'Error al guardar el registro - ' . $th->getMessage(),
+                ]);
+            }
         }
     }
 

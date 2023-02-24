@@ -36,8 +36,9 @@
                                 @ {{ __(auth()->user()->nickname)}}
                             </p>
                         </div>
+
                         <p class="description text-center">
-                        {{$frase[0]}}
+                            {{$frase[0]}}
                         </p>
                     </div>
                     <div class="card-footer">
@@ -65,7 +66,7 @@
             </div>
             <div class="col-md-8 text-center" id="profile-tour">
 
-                <form id="edit-user-profile"  class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                <form id="edit-user-profile" class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="card shadow">
@@ -77,7 +78,7 @@
                                 <label class="col-md-3 col-form-label">{{ __('Name') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-group">
-                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ auth()->user()->name }}" required>
+                                        <input type="text" name="name" class="form-control" placeholder="Name" value="{{ auth()->user()->name }}" disabled>
                                     </div>
                                     @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -95,6 +96,32 @@
                                     @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">Celular</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" name="phone" class="form-control" placeholder="Celular..." value="{{ auth()->user()->phone }}">
+                                    </div>
+                                    @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label class="col-md-3 col-form-label">Usuario</label>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <input type="text" name="nickname" class="form-control" placeholder="usuario..." value="{{ auth()->user()->nickname }}">
+                                    </div>
+                                    @if ($errors->has('nickname'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('nickname') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -123,7 +150,7 @@
                         </div>
                     </div>
                 </form>
-                <form   class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.password') }}" method="POST">
+                <form class="form-horizontal col-md-12 mx-auto" action="{{ route('profile.password') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="card shadow">

@@ -19,7 +19,7 @@ class IndexAdministrators extends Component
     ];
     public function render()
     {
-        $users = User::whereNotIn('email', ['arnulfoacosta0887@gmail.com'])->get();
+        $users = User::whereNotIn('email', ['harold0887@hotmail.com'])->get();
 
         $administradores = User::role('administrador')->where(function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%')
@@ -27,7 +27,7 @@ class IndexAdministrators extends Component
                 ->orWhere('phone', 'like', '%' . $this->search . '%')
                 ->orWhere('nickname', 'like', '%' . $this->search . '%');
         })
-            //->whereNotIn('email', ['harold0887@hotmail.com'])
+            ->whereNotIn('email', ['harold0887@hotmail.com'])
             ->orderBy($this->sortField, $this->sortDirection)
             ->get();
 
