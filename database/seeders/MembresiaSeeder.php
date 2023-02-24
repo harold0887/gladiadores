@@ -23,7 +23,7 @@ class MembresiaSeeder extends Seeder
             'discount' => 0,
             'price_with_discount' => 800,
             //'description' =>'Membresia mensual',
-            'status' => 1,
+            'status' => 0,
             'main' => 0,
             'created_at' => now(),
             'updated_at' => now(),

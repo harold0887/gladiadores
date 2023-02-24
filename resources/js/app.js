@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+//import Swal from "sweetalert2";
 $(function () {
   collapseWhite();
   showModalLoad();
@@ -280,14 +280,14 @@ function autoplay() {
       {
         breakpoint: 2048,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
         },
       },

@@ -77,6 +77,10 @@
                                 <button class="btn btn-primary btn-round " wire:click="adSubscriptions()">
                                     FINALIZAR INSCRIPCION
                                 </button>
+                                <button class="btn btn-primary btn-round" type="button" disabled>
+                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    Loading...
+                                </button>
 
                             </div>
                             <div class=" justify-content-center text-center">

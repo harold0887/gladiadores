@@ -22,7 +22,7 @@ class OrderShipped extends Mailable
     public function __construct($membresia, $userName)
     {
         $this->userName=$userName;
-        $this->subject = "Suscripción -" . $membresia->name;
+        $this->subject = $membresia->name;
         $this->price = $membresia->price_with_discount;
         $this->type = $this->type = $membresia->name;
         $this->inicio = date_format(new Carbon(now()), 'd-M-Y');

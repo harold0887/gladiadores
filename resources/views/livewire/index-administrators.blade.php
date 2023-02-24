@@ -13,10 +13,7 @@
             <div class="col-12 ">
                 <div class="row  justify-content-between">
                     <div class="col-12 col-md-auto mt-2 align-self-center">
-                        <a class="btn  btn-block  btn-outline-primary " data-toggle="modal" data-target="#modal-add-admin">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Agregar administrador</span>
-                        </a>
+                        
                     </div>
                     <div class="col-12 col-md-3  mt-2  align-self-center">
                         @if ($search !='')
