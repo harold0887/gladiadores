@@ -248,7 +248,7 @@ function autoplay() {
     responsive: [{
       breakpoint: 2048,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1
       }
     }, {
