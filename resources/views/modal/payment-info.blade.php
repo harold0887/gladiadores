@@ -10,11 +10,12 @@
             <div class="modal-body">
                 <h4 class="text-center">
 
+                @auth
                     @php
                     $name = explode(" ", Auth::user()->name);
                     echo '¡'.$name[0].'! Finaliza el pago de tu suscripción.' ;
                     @endphp
-
+                @endauth
                 </h4>
                 <div class="row justify-content-center">
                     <div class="col-12">

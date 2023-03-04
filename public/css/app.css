@@ -2,14 +2,22 @@
 body{
     background-color: #F4F3EF !important;
   }
-  
+
+  .content{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-top: 77px !important;
+  }
+
+  .img-carousel{
+    height: 650px !important;
+  }
 
   .nav-link:hover, .navbar-nav .active:hover {
     padding: 0px;
     background: #34b5b8  ;
     color: white !important;
   }
-  
 
   .navbar-nav .active {
    
@@ -22,10 +30,8 @@ body{
     margin: 0 15px;
     border: solid 2px #34b5b8 ;
   }
-  
 
   /* fondo blanco con cambio de clase */
-  
 
   .full-page .full-page-background {
     position: absolute;
@@ -38,7 +44,6 @@ body{
     background-size: cover;
     background-position: center center;
   }
-  
 
   .full-page1:after {
     position: absolute;
@@ -51,39 +56,32 @@ body{
     content: "";
     background-color: #F4F3EF !important;
   }
-  
 
   .full-page1 > .content,
 .full-page1 > .footer {
   position: relative;
   z-index: 4;
 }
-  
 
   .full-page1.section-image {
   position: initial;
 }
-  
 
   .full-page1 > .content {
   padding-top: 21vh;
 }
-  
 
   .full-page1 .footer {
   position: absolute;
   width: 100%;
   bottom: 0;
 }
-  
 
   .full-page1 .footer .container {
   color: white;
 }
-  
 
   /* end fondo blanco con cambio de clase */
-  
 
   .error-page .title {
   font-size: 12em !important;
@@ -91,7 +89,6 @@ body{
   letter-spacing: 14px;
   font-weight: 700;
 }
-  
 
   .avatar-md {
   width: 80px !important;
@@ -100,7 +97,6 @@ body{
   border-radius: 50%;
 
 }
-  
 
   .avatar-lg {
   width: 120px;
@@ -109,7 +105,6 @@ body{
   border-radius: 50%;
   margin-bottom: 15px;
 }
-  
 
   .main-panel1 {
   position: relative;
@@ -119,19 +114,16 @@ body{
   transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
   
 }
-  
 
   .main-panel1 > .content {
   padding: 0 30px 30px;
   min-height: calc(100vh - 123px);
   margin-top: 93px;
 }
-  
 
   .border-primary {
   border-color: #34b5b8 !important;
 }
-  
 
   .whatsapp {
   position:fixed;
@@ -146,20 +138,16 @@ body{
   font-size:30px;
   z-index:100;
 }
-  
 
   .whatsapp-icon {
   margin-top:13px;
 }
-  
 
   /* toogle button  */
-  
 
   .togglebutton {
   vertical-align: middle;
 }
-  
 
   .togglebutton,
 .togglebutton label,
@@ -169,42 +157,35 @@ body{
      -moz-user-select: none;
           user-select: none;
 }
-  
 
   .togglebutton label {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.26);
 }
-  
 
   .form-group.is-focused .togglebutton label {
   color: rgba(0, 0, 0, 0.26);
 }
-  
 
   .form-group.is-focused .togglebutton label:hover,
 .form-group.is-focused .togglebutton label:focus {
   color: rgba(0, 0, 0, .54);
 }
-  
 
   fieldset[disabled] .form-group.is-focused .togglebutton label {
   color: rgba(0, 0, 0, 0.26);
 }
-  
 
   .togglebutton label input[type=checkbox] {
   opacity: 0;
   width: 0;
   height: 0;
 }
-  
 
   .togglebutton label .toggle {
   text-align: left;
   margin-left: 5px;
 }
-  
 
   .togglebutton label .toggle,
 .togglebutton label input[type=checkbox][disabled]+.toggle {
@@ -218,7 +199,6 @@ body{
   transition: background 0.3s ease;
   vertical-align: middle;
 }
-  
 
   .togglebutton label .toggle:after {
   content: "";
@@ -234,47 +214,38 @@ body{
   border: 1px solid rgba(0, 0, 0, .54);
   transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
-  
 
   .togglebutton label input[type=checkbox][disabled]+.toggle:after,
 .togglebutton label input[type=checkbox][disabled]:checked+.toggle:after {
   background-color: #BDBDBD;
 }
-  
 
   .togglebutton label input[type=checkbox]+.toggle:active:after,
 .togglebutton label input[type=checkbox][disabled]+.toggle:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
 }
-  
 
   .togglebutton label input[type=checkbox]:checked+.toggle:after {
   left: 15px;
 }
-  
 
   .togglebutton label input[type=checkbox]:checked+.toggle {
   background-color: #34b5b8;
 }
-  
 
   .togglebutton label input[type=checkbox]:checked+.toggle:after {
   border-color: #34b5b8 ;
 }
-  
 
   .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(156, 39, 176, 0.1);
 }
-  
 
   /*end  toogle button  */
-  
 
   .price-label {
   background-color: #34b5b8;
 }
-  
 
   .price-label {
   position: absolute;
@@ -297,7 +268,6 @@ body{
   -webkit-perspective: 800px;
  
 }
-  
 
   .plan__price__full {
   position: absolute;
@@ -311,7 +281,6 @@ body{
   transform: skewY(25deg);
   width: 100px;
 }
-  
 
   .logo{
   color: #51cbce; 
@@ -320,7 +289,25 @@ body{
 
   width:75px;
 }
-  
+
+  .couch{
+  height: 500px;
+  max-width:100% !important;
+  background-repeat: no-repeat; 
+  background-position: center center; 
+  background-size: cover;
+}
+
+  .carousel-caption {
+  position: absolute;
+  right: 50px;
+  bottom: 20px;
+  left: 50px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
 
   @media only screen and (max-device-width: 500px) {
   .avatar-md
@@ -348,8 +335,27 @@ body{
     width:58px;
     left:45%
   }
+
+  .couch{
+    height: 230px;
+ 
+  }
+
+  .carousel-caption {
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .img-carousel{
+    height: 300px !important;
+  }
+
+
   
 
 }
+
+
 
 

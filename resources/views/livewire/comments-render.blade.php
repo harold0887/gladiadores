@@ -21,8 +21,6 @@
 
 
                                 </td>
-
-
                                 <td class="text-left">
                                     {{ $comment->comment }}
                                 </td>

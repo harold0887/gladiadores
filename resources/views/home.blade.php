@@ -10,98 +10,103 @@
 
 @section('content')
 
+
 <div class="content">
+
+    <div class="lazy ">
+        <div class="col-12  img-carousel" style="background-image: url(&quot; {{ asset('img/main/main2.jpg') }} &quot;); ">
+            <div class="carousel-caption">
+                <h1 class="font-weight-bold  title-caption">CLASES DE BOX A LA MEDIDA</h1>
+                <p class="">¡Toma tu clase muestra sin costo!</p>
+                <h4 class="font-weight-bold ">Comienza desde $750 MXN al mes</h4>
+                <a class="btn btn-outline-warning btn-lg" href="{{route('memberships')}}">
+                    VER PLANES
+                </a>
+
+            </div>
+        </div>
+        <div class="col-12  img-carousel" style="background-image: url(&quot; {{ asset('img/main/main.jpg') }} &quot;); ">
+
+        </div>
+
+        <div class="col-12  img-carousel" style="background-image: url(&quot; {{ asset('img/main/main3.jpg') }} &quot;); ">
+
+        </div>
+
+    </div>
+
     <div class="container-fluid">
 
-
-
-        <div class="row">
-            <div class="col-md-12">
-
-            </div>
-            <div class="col-md-4">
-                <div class="card card-login card-hidden mb-3">
-                    <div class="card-header card-header-primary text-center">
-                        <h4>Inicio</h4>
-                    </div>
-
-                    <div class="card-body">
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-login card-hidden mb-3">
-                    <div class="card-header card-header-primary text-center">
-                        <h4>Inicio</h4>
-                    </div>
-
-                    <div class="card-body">
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-login card-hidden mb-3">
-                    <div class="card-header card-header-primary text-center">
-                        <h4>Inicio</h4>
-                    </div>
-
-                    <div class="card-body">
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-login card-hidden mb-3">
-                    <div class="card-header card-header-primary text-center">
-                        <h4>Inicio</h4>
-                    </div>
-
-                    <div class="card-body">
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-login card-hidden mb-3">
-                    <div class="card-header card-header-primary text-center">
-                        <h4>Inicio</h4>
-                    </div>
-
-                    <div class="card-body">
-                        You are logged in!
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-    </div>
     <div class="row">
-        <div class="col-12 p-0">
-            <div class="text-center">
-                <h2 class="pt-5  lg:text-4xl lg:pt-12 md:text-3xl md:font-bold text-center  text-2xl " style="font-size:27px;font-weight:700; color:#4d4d4d">
-                    ¿Qué dicen los suscriptores?
-                </h2>
-                <p class="text-center  mt-2 text-sm md:text-lg " style="color:#4d4d4d">
-                    <strong> ¿Aún no estás convencid@? </strong>
+        
+    </div>
 
-                </p>
-                <p style="color:#4d4d4d">
-                    Mira lo que lo que piensan los suscriptores de nuestros entrenamientos.
 
-                </p>
+
+
+        <div class="row border">
+            <div class="col-12 col-lg-6 couch" style="background-image: url(&quot; {{ asset('img/coach/coach.jpg') }} &quot;); "></div>
+
+            <div class=" col-12 col-lg-6 text-center text-lg-left">
+                <h4 class="card-title text-primary">La bestia</h4>
+                <h6 class="card-category">Couch</h6>
                 <p>
-                    <small id="comments-show" class="text-primary" style="cursor:pointer">Ver todos los comentarios o dejar un comentario.</small>
+                    Entrenador certificado y reconocido por apoyar al talento de Quintana Roo.
                 </p>
             </div>
+
+
         </div>
+
+        <div class="row border mt-5 mt-lg-0">
+            <div class="order-2 order-lg-1 col-12 col-lg-6 text-center text-lg-right border">
+                <h4 class="card-title text-primary">Taurino el mono</h4>
+                <h6 class="card-category">Couch</h6>
+                <p>
+                    Entrenador certificado por fumar mariguana en el GYM.
+                </p>
+            </div>
+            <div class="order-1 order-lg-2 col-12 col-lg-6 couch" style="background-image: url(&quot; {{ asset('img/coach/coach1.jpg') }} &quot;); "></div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="text-center">
+                    <h2 class="pt-5  lg:text-4xl lg:pt-12 md:text-3xl md:font-bold text-center  text-2xl " style="font-size:27px;font-weight:700; color:#4d4d4d">
+                        ¿Qué dicen los suscriptores?
+                    </h2>
+                    <p class="text-center  mt-2 text-sm md:text-lg " style="color:#4d4d4d">
+                        <strong> ¿Aún no estás convencid@? </strong>
+
+                    </p>
+                    <p style="color:#4d4d4d">
+                        Mira lo que lo que piensan los suscriptores de nuestros entrenamientos.
+
+                    </p>
+                    <p>
+                        <small id="comments-show" class="text-primary" style="cursor:pointer">Ver todos los comentarios o dejar un comentario.</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+
     <div id="comments-slick" class="coments-autoplay m-0" style="display: show">
         @if (isset($comments) && $comments->count() > 0)
         @foreach ($comments as $comment)
@@ -149,6 +154,8 @@
     <div id="comments-all" style="display: none">
         <livewire:comments-render />
     </div>
+
+
 
 
 

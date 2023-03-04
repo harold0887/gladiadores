@@ -240,6 +240,17 @@ Livewire.on("confirm-user-add-membreship", function () {
 
 //slider
 function autoplay() {
+  $(".lazy").slick({
+    autoplay: true,
+    lazyLoad: "ondemand",
+    // ondemand progressive anticipated
+    infinite: true,
+    dots: true,
+    speed: 500,
+    fade: true,
+    cssEase: "linear",
+    arrows: false
+  });
   $(".coments-autoplay").slick({
     autoplay: true,
     autoplaySpeed: 2300,

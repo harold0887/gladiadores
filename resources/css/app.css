@@ -2,6 +2,22 @@
 body{
     background-color: #F4F3EF !important;
   }
+
+  .content{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-top: 77px !important;
+  }
+ 
+  .img-carousel{
+    height: 650px !important;
+  }
+
+  
+
+ 
+
+ 
   
 
   .nav-link:hover, .navbar-nav .active:hover {
@@ -312,6 +328,35 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 }
 
 
+.couch{
+  height: 500px;
+  max-width:100% !important;
+  background-repeat: no-repeat; 
+  background-position: center center; 
+  background-size: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  right: 50px;
+  bottom: 20px;
+  left: 50px;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -341,7 +386,26 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
     width:58px;
     left:45%
   }
+
+  .couch{
+    height: 230px;
+ 
+  }
+
+  .carousel-caption {
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .img-carousel{
+    height: 300px !important;
+  }
+
+
   
 
 }
+
+
 
