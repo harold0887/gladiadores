@@ -18,20 +18,20 @@
                 </div>
                 <div class="card-body">
                     <div class="author">
-                        <a href="#">
+                     
                             @if(isset(auth()->user()->picture))
                             <img class="avatar border-gray" src="{{ Storage::url(Auth::user()->picture) }}" alt="...">
                             @else
                             <img class="avatar border-gray" src="{{ asset('img/No Profile Picture.png') }}" alt="...">
                             @endif
 
-                            <h5 class="title">{{ __(auth()->user()->name)}}</h5>
-                        </a>
-                        <p class="description">
+                            <h5 class="title text-primary">{{ __(auth()->user()->name)}}</h5>
+                 
+                        <p class="description font-weight-bold">
                             @ {{ __(auth()->user()->name)}}
                         </p>
                     </div>
-                    <p class="description text-center">
+                    <p class="description text-center font-weight-normal font-italic">
                         {{$frase[0]}}
                     </p>
                 </div>

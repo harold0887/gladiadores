@@ -10,12 +10,12 @@
             <div class="modal-body">
                 <h4 class="text-center">
 
-                @auth
+                    @auth
                     @php
                     $name = explode(" ", Auth::user()->name);
                     echo '¡'.$name[0].'! Finaliza el pago de tu suscripción.' ;
                     @endphp
-                @endauth
+                    @endauth
                 </h4>
                 <div class="row justify-content-center">
                     <div class="col-12">
@@ -34,33 +34,33 @@
                                     Nota: te enviaremos un email con esta información.
                                 </small>
                                 <hr>
-                                <h5 class="mt-5">Resumen.</h5>
+                                <h5>Resumen.</h5>
                                 <table class="table ">
                                     <tr>
-                                        <td class="p-1">
-                                            <i class="fa-solid fa-trophy"></i>
+                                        <td class="p-1 text-center">
+                                            <i class="fa-solid fa-trophy  fa-2x"></i>
                                         </td>
-                                        <td class="p-1 text-muted" colspan="2">
+                                        <td class="p-1 text-muted font-weight-bold" colspan="2">
                                             {!!$type!!}
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="p-1">
-                                            <i class="fa fa-calendar-o"></i>
+                                        <td class="p-1 text-center">
+                                            <i class="fa fa-calendar-o  fa-2x"></i>
 
                                         </td>
                                         <td class="p-1 text-muted">
-                                            Inicio: {{$inicio}}
+                                            <span class="font-weight-bold">Inicio:</span> {{$inicio}}
 
                                         </td>
                                         <td class="p-1 text-muted">
-                                            Fin: {{$fin}}
+                                            <span class="font-weight-bold">Fin:</span> {{$fin}}
 
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="p-1">
-                                            <i class="fa-solid fa-money-bill"></i>
+                                        <td class="p-1 text-center">
+                                            <i class="fa-solid fa-money-bill  fa-2x"></i>
 
                                         </td>
                                         <td class="p-1 text-muted">
@@ -68,23 +68,23 @@
 
                                         </td>
                                         <td>
-                                            <span class="text-warning">Pago pendiente</span>
+                                            <span class="text-warning font-weight-bold">Pago pendiente</span>
                                         </td>
                                     </tr>
 
                                 </table>
                             </div>
                             <div class="card-footer text-center justify-content-center">
-                                <button class="btn btn-primary btn-round " wire:click="adSubscriptions()">
+                                <button class="btn btn-primary btn-round " wire:click="adSubscriptions()" wire:loading.remove>
                                     FINALIZAR INSCRIPCION
                                 </button>
-                                <button class="btn btn-primary btn-round" type="button" disabled>
+                                <button class="btn btn-primary btn-round" type="button" disabled wire:loading>
                                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                     Loading...
                                 </button>
 
                             </div>
-                            <div class=" justify-content-center text-center">
+                            <div class=" justify-content-center text-center mt-5">
                                 <small>
                                     Si tiene alguna pregunta, no dude en contactarme. Solo da click en el logo de WhatsApp
                                 </small>

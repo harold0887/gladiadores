@@ -3,23 +3,32 @@ body{
     background-color: #F4F3EF !important;
   }
 
-  .content{
+  
+
+   .main-panel1 .content {
     padding-left: 0px !important;
     padding-right: 0px !important;
     margin-top: 77px !important;
+
   }
 
-  .img-carousel{
+  
+
+   .img-carousel{
     height: 650px !important;
   }
 
-  .nav-link:hover, .navbar-nav .active:hover {
+  
+
+   .nav-link:hover, .navbar-nav .active:hover {
     padding: 0px;
     background: #34b5b8  ;
     color: white !important;
   }
 
-  .navbar-nav .active {
+  
+
+   .navbar-nav .active {
    
     color: white !important;
     font-weight: 500;
@@ -31,9 +40,13 @@ body{
     border: solid 2px #34b5b8 ;
   }
 
-  /* fondo blanco con cambio de clase */
+  
 
-  .full-page .full-page-background {
+   /* fondo blanco con cambio de clase */
+
+  
+
+   .full-page .full-page-background {
     position: absolute;
     z-index: 1;
     height: 100%;
@@ -45,7 +58,9 @@ body{
     background-position: center center;
   }
 
-  .full-page1:after {
+  
+
+   .full-page1:after {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -57,40 +72,56 @@ body{
     background-color: #F4F3EF !important;
   }
 
-  .full-page1 > .content,
+  
+
+   .full-page1 > .content,
 .full-page1 > .footer {
   position: relative;
   z-index: 4;
 }
 
-  .full-page1.section-image {
+  
+
+   .full-page1.section-image {
   position: initial;
 }
 
-  .full-page1 > .content {
+  
+
+   .full-page1 > .content {
   padding-top: 21vh;
 }
 
-  .full-page1 .footer {
+  
+
+   .full-page1 .footer {
   position: absolute;
   width: 100%;
   bottom: 0;
 }
 
-  .full-page1 .footer .container {
+  
+
+   .full-page1 .footer .container {
   color: white;
 }
 
-  /* end fondo blanco con cambio de clase */
+  
 
-  .error-page .title {
+   /* end fondo blanco con cambio de clase */
+
+  
+
+   .error-page .title {
   font-size: 12em !important;
   color: #fff;
   letter-spacing: 14px;
   font-weight: 700;
 }
 
-  .avatar-md {
+  
+
+   .avatar-md {
   width: 80px !important;
   height: 80px !important;
  
@@ -98,7 +129,9 @@ body{
 
 }
 
-  .avatar-lg {
+  
+
+   .avatar-lg {
   width: 120px;
   height: 120px;
   overflow: hidden;
@@ -106,7 +139,9 @@ body{
   margin-bottom: 15px;
 }
 
-  .main-panel1 {
+  
+
+   .main-panel1 {
   position: relative;
   float: right;
   width: calc(100% - 0px);
@@ -115,17 +150,23 @@ body{
   
 }
 
-  .main-panel1 > .content {
+  
+
+   .main-panel1 > .content {
   padding: 0 30px 30px;
   min-height: calc(100vh - 123px);
   margin-top: 93px;
 }
 
-  .border-primary {
+  
+
+   .border-primary {
   border-color: #34b5b8 !important;
 }
 
-  .whatsapp {
+  
+
+   .whatsapp {
   position:fixed;
   width:60px;
   height:60px;
@@ -139,17 +180,25 @@ body{
   z-index:100;
 }
 
-  .whatsapp-icon {
+  
+
+   .whatsapp-icon {
   margin-top:13px;
 }
 
-  /* toogle button  */
+  
 
-  .togglebutton {
+   /* toogle button  */
+
+  
+
+   .togglebutton {
   vertical-align: middle;
 }
 
-  .togglebutton,
+  
+
+   .togglebutton,
 .togglebutton label,
 .togglebutton input,
 .togglebutton .toggle {
@@ -158,36 +207,50 @@ body{
           user-select: none;
 }
 
-  .togglebutton label {
+  
+
+   .togglebutton label {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.26);
 }
 
-  .form-group.is-focused .togglebutton label {
+  
+
+   .form-group.is-focused .togglebutton label {
   color: rgba(0, 0, 0, 0.26);
 }
 
-  .form-group.is-focused .togglebutton label:hover,
+  
+
+   .form-group.is-focused .togglebutton label:hover,
 .form-group.is-focused .togglebutton label:focus {
   color: rgba(0, 0, 0, .54);
 }
 
-  fieldset[disabled] .form-group.is-focused .togglebutton label {
+  
+
+   fieldset[disabled] .form-group.is-focused .togglebutton label {
   color: rgba(0, 0, 0, 0.26);
 }
 
-  .togglebutton label input[type=checkbox] {
+  
+
+   .togglebutton label input[type=checkbox] {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-  .togglebutton label .toggle {
+  
+
+   .togglebutton label .toggle {
   text-align: left;
   margin-left: 5px;
 }
 
-  .togglebutton label .toggle,
+  
+
+   .togglebutton label .toggle,
 .togglebutton label input[type=checkbox][disabled]+.toggle {
   content: "";
   display: inline-block;
@@ -200,7 +263,9 @@ body{
   vertical-align: middle;
 }
 
-  .togglebutton label .toggle:after {
+  
+
+   .togglebutton label .toggle:after {
   content: "";
   display: inline-block;
   width: 20px;
@@ -215,39 +280,57 @@ body{
   transition: left 0.3s ease, background 0.3s ease, box-shadow 0.1s ease;
 }
 
-  .togglebutton label input[type=checkbox][disabled]+.toggle:after,
+  
+
+   .togglebutton label input[type=checkbox][disabled]+.toggle:after,
 .togglebutton label input[type=checkbox][disabled]:checked+.toggle:after {
   background-color: #BDBDBD;
 }
 
-  .togglebutton label input[type=checkbox]+.toggle:active:after,
+  
+
+   .togglebutton label input[type=checkbox]+.toggle:active:after,
 .togglebutton label input[type=checkbox][disabled]+.toggle:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-  .togglebutton label input[type=checkbox]:checked+.toggle:after {
+  
+
+   .togglebutton label input[type=checkbox]:checked+.toggle:after {
   left: 15px;
 }
 
-  .togglebutton label input[type=checkbox]:checked+.toggle {
+  
+
+   .togglebutton label input[type=checkbox]:checked+.toggle {
   background-color: #34b5b8;
 }
 
-  .togglebutton label input[type=checkbox]:checked+.toggle:after {
+  
+
+   .togglebutton label input[type=checkbox]:checked+.toggle:after {
   border-color: #34b5b8 ;
 }
 
-  .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
+  
+
+   .togglebutton label input[type=checkbox]:checked+.toggle:active:after {
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(156, 39, 176, 0.1);
 }
 
-  /*end  toogle button  */
+  
 
-  .price-label {
+   /*end  toogle button  */
+
+  
+
+   .price-label {
   background-color: #34b5b8;
 }
 
-  .price-label {
+  
+
+   .price-label {
   position: absolute;
   top: 16px;
   right: -31px;
@@ -269,7 +352,9 @@ body{
  
 }
 
-  .plan__price__full {
+  
+
+   .plan__price__full {
   position: absolute;
   content: "";
   left: 0;
@@ -282,7 +367,9 @@ body{
   width: 100px;
 }
 
-  .logo{
+  
+
+   .logo{
   color: #51cbce; 
   position:absolute; 
   top:2px;
@@ -290,7 +377,9 @@ body{
   width:75px;
 }
 
-  .couch{
+  
+
+   .couch{
   height: 500px;
   max-width:100% !important;
   background-repeat: no-repeat; 
@@ -298,7 +387,9 @@ body{
   background-size: cover;
 }
 
-  .carousel-caption {
+  
+
+   .carousel-caption {
   position: absolute;
   right: 50px;
   bottom: 20px;
@@ -309,7 +400,9 @@ body{
   text-align: center;
 }
 
-  @media only screen and (max-device-width: 500px) {
+  
+
+   @media only screen and (max-device-width: 500px) {
   .avatar-md
   {
       width: 50px;

@@ -3,10 +3,13 @@ body{
     background-color: #F4F3EF !important;
   }
 
-  .content{
+  
+
+   .main-panel1 .content {
     padding-left: 0px !important;
     padding-right: 0px !important;
     margin-top: 77px !important;
+
   }
  
   .img-carousel{

@@ -36,7 +36,7 @@
                         <li class="nav-item {{ $activePage == 'profile' ? 'active' : '' }}">
                             <a href="{{ route('dashboard.edit') }}">
                                 <span class="sidebar-mini-icon">{{ __('MP') }}</span>
-                                <span class="sidebar-normal">{{ __('My Profile') }}</span>
+                                <span class="sidebar-normal ">{{ __('My Profile') }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
