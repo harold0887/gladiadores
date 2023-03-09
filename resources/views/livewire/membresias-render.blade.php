@@ -70,7 +70,10 @@
                         <button class=" btn   btn-primary btn-round " wire:click="setData('{{$membership->id}}')">
                             <span>inscribirme</span>
                         </button>
-
+                        @else
+                        <button class=" btn   btn-primary btn-round " wire:click="setData('{{$membership->id}}')">
+                            <span>inscribirme</span>
+                        </button>
 
                         @endauth
 
